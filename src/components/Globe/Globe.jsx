@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unknown-property */
 import { Canvas, useFrame } from '@react-three/fiber';
-import { MeshDistortMaterial, OrbitControls, Stars } from '@react-three/drei';
+import { Billboard, OrbitControls, Stars, Text3D } from '@react-three/drei';
 import { useState, useEffect, useMemo, useRef } from 'react';
 import { DoubleSide, BufferGeometry, Float32BufferAttribute } from 'three';
 import PropTypes from 'prop-types';
@@ -13,8 +13,6 @@ const loadGeoJSON = async () => {
     const data = await response.json();
     return data.features;
 };
-
-const AnimatedMeshDistortMaterial = animated(MeshDistortMaterial);
 
 // Function to ensure counterclockwise winding order for polygons
 const ensureCounterClockwise = (polygon) => {
@@ -30,9 +28,10 @@ const ensureCounterClockwise = (polygon) => {
 const Globe = () => {
     const [landData, setLandData] = useState([]);
     const [isDragging, setIsDragging] = useState(false); // State to track user interaction
-    const radius = 1.5;
+    const radius = 1.7;
     const globeRef = useRef(); // Globe mesh ref
     const groupRef = useRef(); // Group ref to rotate both globe and land meshes
+    const textRef = useRef();
     const landMeshesRef = useRef([]); // Ref for land meshes
 
     // Spring for smooth transitions
@@ -50,6 +49,22 @@ const Globe = () => {
         };
         fetchData();
     }, []);
+
+    useEffect(() => {
+        if (textRef.current) {
+            textRef.current.geometry.computeBoundingBox();
+            const boundingBox = textRef.current.geometry.boundingBox;
+
+            if (boundingBox) {
+                // Calculate the center offset based on bounding box size
+                const offsetX = -(boundingBox.max.x + boundingBox.min.x) / 2;
+                const offsetY = -(boundingBox.max.y + boundingBox.min.y) / 2;
+
+                // Adjust position to center the text
+                textRef.current.position.set(offsetX, offsetY, 0);
+            }
+        }
+    }, [landData]);
 
     // Memoize simplified polygons to avoid recalculating
     const simplifiedPolygons = useMemo(() => {
@@ -83,12 +98,10 @@ const Globe = () => {
     const landMeshes = useMemo(() => {
         const meshes = [];
 
+        // eslint-disable-next-line no-unused-vars
         simplifiedPolygons.forEach(({ countryName, polygons }) => {
             polygons.forEach((polygon) => {
-                let color = 'green'; // Default color
-                if (countryName === 'Qatar') color = 'purple';
-                if (countryName === 'Lebanon') color = 'red';
-                if (countryName === 'Cyprus') color = 'white';
+                let color = '#8e1b3d'; // Default color for land (matches main website color)
 
                 // Flatten the polygon to a 2D array for triangulation
                 const flatPolygon = polygon.flat();
@@ -131,99 +144,110 @@ const Globe = () => {
     };
 
     return (
-        <>
-            <div>
-                <button>HI</button>
-            </div>
-            <Canvas shadows>
-                {/* Lights */}
-                <ambientLight intensity={0.2} color="white" /> {/* Dim ambient light */}
+        <Canvas>
+            {/* Lights */}
+            <ambientLight intensity={1.5} color="white" /> {/* Bright ambient light for uniform lighting */}
 
-                {/* Directional lights for dynamic shading */}
-                <directionalLight
-                    position={[5, 5, 5]}
-                    intensity={1.0}
-                    color="white"
-                    castShadow
-                />
-                <directionalLight
-                    position={[-5, -5, -5]}
-                    intensity={0.6}
-                    color="white"
-                    castShadow
-                />
+            {/* Soft directional light to highlight the globe */}
+            <directionalLight
+                position={[5, 5, 5]}
+                intensity={0.8}
+                color="#ffffff"
+            />
 
-                {/* Stars */}
-                <Stars radius={300} depth={60} count={5000} factor={7} saturation={0} fade />
+            {/* Stars */}
+            <Stars radius={300} depth={60} count={5000} factor={7} saturation={0} fade />
 
-                {/* Create the 3D globe (sphere) */}
-                <animated.group
-                    ref={groupRef}
-                    scale={scale}
-                    onPointerOver={handlePointerOver}
-                    onPointerDown={handlePointerDown}
-                    onPointerUp={handlePointerUp}
-                >
-                    <animated.mesh ref={globeRef} castShadow>
-                        <animated.sphereGeometry args={[1.42, 128, 128]} />
-                        <AnimatedMeshDistortMaterial
-                            speed={2}               // Animation speed
-                            distort={0.2}           // Distortion intensity
-                            color="#0077be"             // Base color of the material
-                            emissive="#005b7f"          // Emissive color for glow effect
-                            emissiveIntensity={0.9}     // Intensity of the emissive color
-                            opacity={0.9}               // Transparency level
-                            roughness={0.9}             // Surface roughness
-                            // metalness={0.4}             // Reflectivity level
-                            transparent={true}          // Enables transparency
-                        />
+            {/* Create the 3D globe (sphere) */}
+            <animated.group
+                ref={groupRef}
+                scale={scale}
+                onPointerOver={handlePointerOver}
+                onPointerDown={handlePointerDown}
+                onPointerUp={handlePointerUp}
+            >
+                <mesh ref={globeRef}>
+                    <sphereGeometry args={[1.62, 128, 128]} />
 
-                        {/* <meshStandardMaterial
-                            color="#10294e"
-                            opacity={0.8}
-                        // transparent
-                        // metalness={0.5}
-                        // roughness={0.2}
-                        /> */}
-                    </animated.mesh>
+                    <meshStandardMaterial
+                        color="#1b3d8e" // Updated to a deep blue shade
+                        emissive="#11275b" // A complementary subtle glow color
+                        emissiveIntensity={0.2}
+                        transparent={true}
+                        opacity={0.2}
+                        roughness={0.5}
+                        metalness={0.8}
+                        clearcoat={1.0}
+                        clearcoatRoughness={0.2}
+                        wireframe={true}
+                    />
 
+                </mesh>
 
-                    {/* Render land meshes */}
-                    {landMeshes.map((mesh, index) => (
-                        <mesh
-                            key={index}
-                            geometry={mesh.geometry}
-                            ref={(el) => (landMeshesRef.current[index] = el)} // Store references to each land mesh
-                            onPointerOver={(e) => {
-                                e.stopPropagation();
-                                mesh.color = 'white'; // Highlight color on hover
-                            }}
-                            onPointerOut={(e) => {
-                                e.stopPropagation();
-                                mesh.color = 'green'; // Reset color
-                            }}
-                        >
-                            <meshStandardMaterial
-                                color={mesh.color}
-                                side={DoubleSide}
+                {/* Render land meshes */}
+                {landMeshes.map((mesh, index) => (
+                    <mesh
+                        key={index}
+                        geometry={mesh.geometry}
+                        ref={(el) => (landMeshesRef.current[index] = el)}
+                    >
+                        <animated.meshStandardMaterial
+                            color={mesh.color}
+                            side={DoubleSide}
                             // polygonOffset={true}
                             // polygonOffsetFactor={-1}
                             // polygonOffsetUnits={-4}
-                            />
-                        </mesh>
-                    ))}
-                </animated.group>
+                            // transparent={isDragging}
+                            opacity={0.2}
+                            roughness={0.7}
+                            // metalness={0.1}
+                            clearcoat={1.0}
+                            clearcoatRoughness={0.2}
+                            wireframe={isDragging}
 
-                <OrbitControls
-                    enableZoom={true}
-                    enablePan={false}
-                    minDistance={1}
-                    maxDistance={5}
-                />
-                <RotatingGlobe groupRef={groupRef} rotationSpeed={rotationSpeed} />
-            </Canvas>
-        </>
+                        />
+                    </mesh>
+                ))}
 
+                <Billboard>
+                    <Text3D ref={textRef}
+                        font="/Fonts/Poppins/Poppins_Regular.json"
+                        size={0.45}
+                        height={0.01}
+                        bevelEnabled={true}
+                        bevelThickness={0.02}
+                        bevelSize={0.02}
+                        bevelSegments={8}
+                        curveSegments={5}
+                        castShadow={true}
+                    >
+                        ProCom
+                        <meshStandardMaterial
+                            color="white"
+                            roughness={0.6}
+                            metalness={0.4}
+                            emissive="#11275b"
+                            emissiveIntensity={0.2} />
+
+                    </Text3D>
+                    {/* Add a point light near the 3D text */}
+                    <pointLight
+                        position={[0, -0, 1]} // Adjust the position to ensure it follows the text
+                        intensity={5} // Brightness of the light
+                        color="white" // Light color
+                        decay={3} // How quickly the light fades over distance
+                    />
+                </Billboard>
+            </animated.group>
+
+            <OrbitControls
+                enableZoom={true}
+                enablePan={false}
+                minDistance={1}
+                maxDistance={5}
+            />
+            <RotatingGlobe groupRef={groupRef} rotationSpeed={rotationSpeed} />
+        </Canvas>
     );
 };
 
