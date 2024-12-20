@@ -4,7 +4,7 @@ import Globe from '../../components/Globe/Globe';
 const Home = () => {
     return (
         <div className="home-page">
-            {/* <h1>Interactive Globe</h1> */}
+            <h1>Interactive Globe</h1>
             <Globe />
             {/* <MyScene /> */}
         </div>
