@@ -1,0 +1,227 @@
+@use "variables";
+
+// ============================
+// NAVBAR COMPONENT
+// ============================
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+
+    // Light mode styles
+    body.light & {
+        background: linear-gradient(45deg, variables.$color-primary-light, variables.$color-secondary-light);
+    }
+
+    // Dark mode styles
+    body.dark & {
+        background: linear-gradient(45deg, variables.$color-primary-dark, variables.$color-secondary-dark);
+    }
+
+    // Media queries for responsiveness
+    @media (max-width: variables.$breakpoint-lg) {
+        flex-direction: column;
+        padding: 15px 30px;
+    }
+
+    @media (max-width: variables.$breakpoint-md) {
+        padding: 10px 20px;
+        flex-direction: column;
+    }
+}
+
+.navbar__logo a {
+    font-size: 2rem;
+    color: variables.$color-text;
+    font-weight: variables.$font-weight-bold;
+    text-decoration: none;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+
+    &:hover {
+        color: variables.$color-accent;
+    }
+
+    // Dark mode logo text color
+    body.dark & {
+        color: variables.$color-text-dark;
+    }
+
+    // Light mode logo text color
+    body.light & {
+        color: variables.$color-text-light;
+    }
+
+    // Media query for smaller screens
+    @media (max-width: variables.$breakpoint-xl) {
+        font-size: 1.8rem;
+    }
+
+    @media (max-width: variables.$breakpoint-md) {
+        font-size: 1.5rem;
+    }
+}
+
+.navbar__links {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+
+    // Media query for medium screens (tablets)
+    @media (max-width: variables.$breakpoint-lg) {
+        gap: 20px;
+    }
+
+    // Media query for smaller screens
+    @media (max-width: variables.$breakpoint-md) {
+        display: none;
+        flex-direction: column;
+        gap: 15px;
+        width: 100%;
+        padding: 0;
+    }
+}
+
+.navbar__link {
+    text-decoration: none;
+    color: variables.$color-text;
+    font-size: 1.1rem;
+    font-weight: variables.$font-weight-bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 5px 10px;
+    border-radius: 30px;
+    transition:
+        background 0.3s ease,
+        transform 0.3s ease;
+
+    &:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+        transform: scale(1.1);
+    }
+
+    // Dark mode navbar link styles
+    body.dark & {
+        color: variables.$color-text-dark;
+
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: variables.$color-text-dark;
+        }
+    }
+
+    // Light mode navbar link styles
+    body.light & {
+        color: variables.$color-text-light;
+
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: variables.$color-text-light;
+        }
+    }
+
+    // Media query for smaller screens
+    @media (max-width: variables.$breakpoint-md) {
+        text-align: center;
+        width: 100%;
+    }
+}
+
+// ============================
+// HAMBURGER MENU
+// ============================
+.navbar__hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+
+    span {
+        width: 30px;
+        height: 4px;
+        background-color: variables.$color-text;
+        transition: all 0.3s ease-in-out;
+    }
+
+    // Media query for smaller screens (Hamburger menu)
+    @media (max-width: variables.$breakpoint-md) {
+        display: flex;
+    }
+
+    // Dark mode hamburger menu color
+    body.dark & span {
+        background-color: variables.$color-text-dark;
+    }
+
+    // Light mode hamburger menu color
+    body.light & span {
+        background-color: variables.$color-text-light;
+    }
+}
+
+// ============================
+// THEME TOGGLE BUTTON STYLES
+// ============================
+.navbar__theme-toggle {
+    background-color: transparent;
+    border: 1px solid variables.$color-primary;
+    padding: variables.$spacing-small variables.$spacing-medium;
+    font-size: 1rem;
+    cursor: pointer;
+    color: variables.$color-text;
+    font-weight: variables.$font-weight-medium;
+    border-radius: 8px;
+    transition:
+        background-color 0.3s ease,
+        color 0.3s ease;
+
+    &:hover {
+        background-color: variables.$color-primary;
+        color: variables.$color-text-light;
+    }
+
+    // Dark mode theme toggle button styles
+    body.dark & {
+        border-color: variables.$color-primary-dark;
+        color: variables.$color-text-dark;
+
+        &:hover {
+            background-color: variables.$color-primary-dark;
+            color: variables.$color-text-light;
+        }
+    }
+
+    // Light mode theme toggle button styles
+    body.light & {
+        border-color: variables.$color-primary-light;
+        color: variables.$color-text-light;
+
+        &:hover {
+            background-color: variables.$color-primary-light;
+            color: variables.$color-text-dark;
+        }
+    }
+
+    // Media query for smaller screens (adjust theme toggle position)
+    @media (max-width: variables.$breakpoint-md) {
+        font-size: 0.9rem;
+        padding: variables.$spacing-small;
+    }
+}
+
+// ============================
+// SHOW/HIDE NAVBAR LINKS (when hamburger is clicked)
+// ============================
+.navbar__links.show {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}

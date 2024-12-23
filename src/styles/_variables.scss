@@ -1,0 +1,93 @@
+// ============================
+// COLORS - BASE (Common Colors)
+// ============================
+$color-accent: #f3c7da;
+
+// ============================
+// COLORS - DARK MODE
+// ============================
+$color-background-dark: #121212;
+$color-text-dark: #ffffff;
+$color-primary-dark: #8a1538;
+$color-secondary-dark: #c54a6c;
+
+// ============================
+// COLORS - LIGHT MODE
+// ============================
+$color-background-light: #ffffff;
+$color-text-light: #212121;
+$color-primary-light: #8a1538;
+$color-secondary-light: #c54a6c;
+
+// ============================
+// LINK AND BUTTON COLORS
+// ============================
+$color-link-hover-light: $color-secondary-light;
+$color-button-background-light: $color-primary-light;
+$color-button-background-hover-light: #c46d86;
+
+$color-link-hover-dark: $color-secondary-dark;
+$color-button-background-dark: $color-primary-dark;
+$color-button-background-hover-dark: #c32f59;
+
+// ============================
+// FONT AND SPACING SETTINGS
+// ============================
+$font-size-base: 16px;
+$font-size-md: 14px;
+$font-size-sm: 12px;
+
+$font-primary: "Poppins", system-ui, sans-serif;
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-bold: 600;
+
+$line-height: 1.5;
+
+$spacing-small: 0.5rem;
+$spacing-medium: 1rem;
+$spacing-large: 1.5rem;
+
+// ============================
+// COMMON FONT SETTINGS
+// ============================
+$font-synthesis: none;
+$text-rendering: optimizeLegibility;
+$font-smoothing: antialiased;
+$moz-osx-font-smoothing: grayscale;
+
+// ============================
+// GLOBAL VARIABLES (Default to Light Mode)
+// ============================
+$color-background: $color-background-light;
+$color-text: $color-text-light;
+$color-primary: $color-primary-light;
+$color-secondary: $color-secondary-light;
+$color-link-hover: $color-link-hover-light;
+$color-button-background: $color-button-background-light;
+$color-button-background-hover: $color-button-background-hover-light;
+
+// ============================
+// MEDIA QUERIES TO HANDLE DARK MODE
+// ============================
+
+// Dark Mode Overrides
+@media (prefers-color-scheme: dark) {
+    $color-background: $color-background-dark;
+    $color-text: $color-text-dark;
+    $color-primary: $color-primary-dark;
+    $color-secondary: $color-secondary-dark;
+
+    $color-link-hover: $color-link-hover-dark;
+    $color-button-background: $color-button-background-dark;
+    $color-button-background-hover: $color-button-background-hover-dark;
+}
+
+// ============================
+// RESPONSIVE BREAKPOINTS
+// ============================
+$breakpoint-xs: 320px; // Extra small (Mobile)
+$breakpoint-sm: 576px; // Small (Mobile, Landscape, Small Tablets)
+$breakpoint-md: 768px; // Medium (Tablets)
+$breakpoint-lg: 1024px; // Large (Desktops, Laptops)
+$breakpoint-xl: 1200px; // Extra Large (Large Desktops, Wide Screens)

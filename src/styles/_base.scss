@@ -1,0 +1,136 @@
+@use "variables";
+
+// ============================
+// RESET DEFAULT STYLES
+// ============================
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+// ============================
+// GLOBAL STYLES
+// ============================
+html {
+    font-family: variables.$font-primary;
+    line-height: variables.$line-height;
+    font-synthesis: variables.$font-synthesis;
+    text-rendering: variables.$text-rendering;
+    -webkit-font-smoothing: variables.$font-smoothing;
+    -moz-osx-font-smoothing: variables.$font-smoothing;
+
+    // Set the base font size for rem calculations
+    font-size: variables.$font-size-base;
+
+    // Optionally, set a default background color or any global properties
+    background-color: variables.$color-background-light; // Default background for light mode
+
+    // Media queries for responsive font size adjustments
+    @media (max-width: variables.$breakpoint-md) {
+        font-size: variables.$font-size-md; // Adjust font size for medium screens
+    }
+    @media (max-width: variables.$breakpoint-sm) {
+        font-size: variables.$font-size-sm; // Adjust font size for smaller screens
+    }
+}
+
+body {
+    margin: 0;
+    min-width: 320px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    // Dark mode styles
+    &.dark {
+        background-color: variables.$color-background-dark;
+        color: variables.$color-text-dark;
+    }
+
+    // Light mode styles
+    &.light {
+        background-color: variables.$color-background-light;
+        color: variables.$color-text-light;
+    }
+}
+
+// ============================
+// LINK STYLES
+// ============================
+a {
+    font-weight: variables.$font-weight-medium;
+    text-decoration: none;
+
+    &:hover {
+        color: variables.$color-link-hover;
+    }
+
+    // Dark mode link styles
+    body.dark & {
+        color: variables.$color-primary-dark;
+
+        &:hover {
+            color: variables.$color-link-hover-dark;
+        }
+    }
+
+    // Light mode link styles
+    body.light & {
+        color: variables.$color-primary-light;
+
+        &:hover {
+            color: variables.$color-link-hover-light;
+        }
+    }
+}
+
+// ============================
+// BUTTON STYLES
+// ============================
+button {
+    border-radius: 8px;
+    border: 1px solid transparent;
+    padding: variables.$spacing-small variables.$spacing-medium;
+    font-size: 1em;
+    font-weight: variables.$font-weight-medium;
+    cursor: pointer;
+    transition:
+        border-color 0.25s,
+        background-color 0.25s,
+        color 0.25s;
+
+    &:hover {
+        background-color: variables.$color-button-background-hover;
+        color: variables.$color-text;
+    }
+
+    &:focus,
+    &:focus-visible {
+        outline: 4px auto -webkit-focus-ring-color;
+    }
+
+    // Dark mode button styles
+    body.dark & {
+        background-color: variables.$color-button-background-dark;
+        color: variables.$color-text-dark;
+
+        &:hover {
+            background-color: variables.$color-button-background-hover-dark;
+            color: variables.$color-text-dark;
+        }
+    }
+
+    // Light mode button styles
+    body.light & {
+        background-color: variables.$color-button-background-light;
+        color: variables.$color-text-light;
+
+        &:hover {
+            background-color: variables.$color-button-background-hover-light;
+            color: variables.$color-text-light;
+        }
+    }
+}

@@ -1,0 +1,29 @@
+@use "variables";
+
+// ============================
+// HOME PAGE STYLES
+// ============================
+.page-home {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    text-align: center;
+    body.light & {
+        background-color: #030303c2;
+    }
+}
+
+.page-home__title {
+    font-size: 3rem;
+    margin-bottom: variables.$spacing-large;
+}
+
+.page-home__canvas {
+    flex: 1;
+    display: block;
+    width: 100vw;
+    height: 100vh;
+}

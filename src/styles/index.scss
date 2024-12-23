@@ -1,30 +1,37 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
 /* ============================================================
     GLOBAL STYLES
-   ------------------------------------------------------------ */
+============================================================ */
+
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+  /* Font and color theme settings */
+  --font-primary: "Poppins", system-ui, Avenir, Helvetica, Arial, sans-serif;
+  --line-height: 1.5;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 600;
 
-  /* Theme variables */
-  --primary-color: #646cff;
-  --secondary-color: #535bf2;
-  // --background-dark: #646cff;
-  --background-dark: #242424;
-  --background-light: #ffffff;
-  --text-light: rgba(255, 255, 255, 0.87);
-  --text-dark: #213547;
+  /* Theme colors */
+  --color-primary: #8a1538;
+  --color-secondary: #c54a6c;
+  --color-background-dark: #121212;
+  --color-background-light: #ffffff;
+  --color-text-light: rgba(255, 255, 255, 0.87);
+  --color-text-dark: #212121;
 
+  /* Light and dark mode color schemes */
   color-scheme: light dark;
-  color: var(--text-light);
-  background-color: var(--background-dark);
+  color: var(--color-text-light);
+  background-color: var(--color-background-dark);
 
+  /* Font rendering */
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Reset default styles */
 * {
   margin: 0;
   padding: 0;
@@ -35,38 +42,54 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
-  background-color: var(--background-dark);
-  color: var(--text-light);
+  background-color: var(--color-background-dark);
+  color: var(--color-text-light);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  font-family: var(--font-primary);
 }
 
+/* Dark Mode */
+body.dark .navbar__link:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+  transform: scale(1.05);
+}
+
+/* Light Mode */
+body.light .navbar__link:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  transform: scale(1.05);
+}
+
+/* Links */
 a {
-  font-weight: 500;
-  color: var(--primary-color);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-primary);
   text-decoration: none;
 }
 
 a:hover {
-  color: var(--secondary-color);
+  color: var(--color-secondary);
 }
 
+/* Button styles */
 button {
   border-radius: 8px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
   font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+  font-weight: var(--font-weight-medium);
+  background-color: var(--color-primary);
+  color: var(--color-text-light);
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition: border-color 0.25s, background-color 0.25s, color 0.25s;
 }
 
 button:hover {
-  border-color: var(--primary-color);
+  background-color: var(--color-secondary);
+  color: var(--color-text-dark);
 }
 
 button:focus,
@@ -74,60 +97,24 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+/* Light mode styles */
 @media (prefers-color-scheme: light) {
   :root {
-    color: var(--text-dark);
-    background-color: var(--background-light);
+    color: var(--color-text-dark);
+    background-color: var(--color-background-light);
   }
 
   a:hover {
-    color: #747bff;
+    color: var(--color-primary);
   }
 
   button {
-    background-color: #f9f9f9;
+    background-color: var(--color-primary);
+    color: var(--color-text-light);
   }
 }
 
-/* ============================================================
-      HOME PAGE STYLES
-     ------------------------------------------------------------ */
-.home-page {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100vw;
-  height: 100vh;
-  background-color: var(--background-dark);
-  color: var(--text-light);
-  text-align: center;
-}
-
-.home-page h1 {
-  font-size: 3rem;
-  margin-bottom: 2rem;
-  z-index: 10;
-  color: var(--text-light);
-}
-
-/* ============================================================
-      CANVAS AND GLOBE STYLES
-     ------------------------------------------------------------ */
-.home-page canvas {
-  flex: 1;
-  /* Makes the globe expand to fill available space */
-  // width: 100%;
-  // height: 100%;
-  // z-index: 1;
-  display: block;
-  width: 100vw;
-  height: 100vh;
-}
-
-/* ============================================================
-      UTILITY CLASSES (OPTIONAL)
-     ------------------------------------------------------------ */
+/* Utility Classes */
 .container {
   max-width: 1280px;
   margin: 0 auto;
@@ -141,4 +128,169 @@ button:focus-visible {
 
 .grid-2 {
   grid-template-columns: repeat(2, 1fr);
+}
+
+/* ============================================================
+    HOME PAGE STYLES
+============================================================ */
+
+.page-home {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--color-background-dark);
+  color: var(--color-text-light);
+  text-align: center;
+}
+
+.page-home__title {
+  font-size: 3rem;
+  margin-bottom: 2rem;
+  color: var(--color-text-light);
+}
+
+/* ============================================================
+    CANVAS AND GLOBE STYLES
+============================================================ */
+.page-home__canvas {
+  flex: 1;
+  display: block;
+  width: 100vw;
+  height: 100vh;
+}
+
+/* ============================================================
+    NAVBAR STYLES
+============================================================ */
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(
+    45deg,
+    var(--color-primary),
+    var(--color-secondary)
+  );
+  padding: 20px 40px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+}
+
+.navbar__logo a {
+  font-size: 2rem;
+  color: var(--color-text-light);
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-bold);
+  text-decoration: none;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: color 0.3s ease;
+}
+
+.navbar__logo a:hover {
+  color: var(--color-background-light);
+}
+
+.navbar__links {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
+
+.navbar__link {
+  text-decoration: none;
+  color: var(--color-text-light);
+  font-size: 1.1rem;
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 5px 10px;
+  border-radius: 30px;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.navbar__link:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1);
+}
+
+/* Mobile View (Hamburger Menu) */
+@media screen and (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .navbar__links {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .navbar__link {
+    padding: 15px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .navbar__link:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+    transform: scale(1.1);
+  }
+
+  .navbar__links--active {
+    display: flex;
+  }
+
+  .navbar__links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    gap: 20px;
+    margin-top: 20px;
+  }
+
+  .navbar__hamburger {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    z-index: 15;
+  }
+
+  .navbar__hamburger-bar {
+    width: 25px;
+    height: 3px;
+    background-color: var(--color-text-light);
+    border-radius: 10px;
+  }
+}
+
+/* Light mode styles */
+@media (prefers-color-scheme: light) {
+  .navbar {
+    background: linear-gradient(45deg, var(--color-primary), #e8b0c0);
+  }
+
+  .navbar__logo a {
+    color: var(--color-text-dark);
+  }
+
+  .navbar__link {
+    color: var(--color-text-dark);
+  }
+
+  .navbar__hamburger-bar {
+    background-color: var(--color-text-dark);
+  }
+
+  .navbar__link:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
 }
