@@ -87,7 +87,7 @@ const Globe = () => {
         // eslint-disable-next-line no-unused-vars
         return simplifiedPolygons.flatMap(({ countryName, polygons }) => {
             return polygons.map((polygon) => {
-                let color = '#8e1b3d';
+                let color = '#8A1538';
                 const flatPolygon = polygon.flat();
                 const earcutIndices = earcut(flatPolygon);
 
@@ -176,7 +176,7 @@ const Globe = () => {
                 </Billboard>
             </animated.group>
 
-            <OrbitControls enableZoom={true} enablePan={false} minDistance={1} maxDistance={5} />
+            <OrbitControls enableZoom={true} enablePan={false} minDistance={3.5} maxDistance={5} />
             <RotatingGlobe groupRef={groupRef} rotationSpeed={rotationSpeed} />
         </Canvas>
     );
@@ -184,54 +184,21 @@ const Globe = () => {
 
 const AnimatedLandMesh = forwardRef(({ geometry, initialColor, isDragging }, ref) => {
     const materialRef = useRef();
-    const pointsRef = useRef([[], []]);
-    const [pulseGroup1, setPulseGroup1] = useState(1);
-    const [pulseGroup2, setPulseGroup2] = useState(0);
-
-    useEffect(() => {
-        const pointsGroup1 = [];
-        const pointsGroup2 = [];
-        const vertices = geometry.attributes.position.array;
-        const numPoints = 2;
-
-        for (let i = 0; i < numPoints; i++) {
-            const vertexIndex = Math.floor(Math.random() * (vertices.length / 2)) * 3;
-            const x = vertices[vertexIndex];
-            const y = vertices[vertexIndex + 1];
-            const z = vertices[vertexIndex + 2];
-
-            if (i % 2 === 0) {
-                pointsGroup1.push([x, y, z]);
-            } else {
-                pointsGroup2.push([x, y, z]);
-            }
-        }
-
-        pointsRef.current = [pointsGroup1, pointsGroup2];
-    }, [geometry]);
 
     useFrame(() => {
-        const time = performance.now() * 0.001;
-        const pulseEffectGroup1 = (Math.sin(time * 2) + 1) / 2;
-        const pulseEffectGroup2 = (Math.sin(time * 2 + Math.PI) + 1) / 2;
+        if (materialRef.current) {
+            const time = performance.now() * 0.001;
+            const t = (Math.sin(time) + 1) / 2;
 
-        setPulseGroup1(pulseEffectGroup1);
-        setPulseGroup2(pulseEffectGroup2);
+            const color1 = new Color('#8A1538');
+            const color2 = new Color('#db3d6d');
+
+            materialRef.current.color.lerpColors(color1, color2, t);
+        }
     });
 
     return (
-        <mesh
-            ref={ref}
-            geometry={geometry}
-            onPointerDown={() => {
-                setPulseGroup1(1);
-                setPulseGroup2(0);
-            }}
-            onPointerUp={() => {
-                setPulseGroup1(0);
-                setPulseGroup2(1);
-            }}
-        >
+        <mesh ref={ref} geometry={geometry}>
             <meshStandardMaterial
                 ref={materialRef}
                 color={initialColor}
@@ -241,39 +208,102 @@ const AnimatedLandMesh = forwardRef(({ geometry, initialColor, isDragging }, ref
                 clearcoatRoughness={0.2}
                 wireframe={isDragging}
             />
-
-            {pointsRef.current[0].map((point, index) => (
-                <mesh key={`group1-${index}`} position={point}>
-                    <sphereGeometry args={[0.005, 4, 4]} />
-                    <meshStandardMaterial
-                        color={new Color('#ffffff').lerp(new Color('#8e1b3d'), pulseGroup1)}
-                        emissive="#ffffff"
-                        emissiveIntensity={0.8}
-                        roughness={0.6}
-                        metalness={0.8}
-                        transparent={true}
-                        opacity={pulseGroup1}
-                    />
-                </mesh>
-            ))}
-
-            {pointsRef.current[1].map((point, index) => (
-                <mesh key={`group2-${index}`} position={point}>
-                    <sphereGeometry args={[0.005, 4, 4]} />
-                    <meshStandardMaterial
-                        color={new Color('#ffffff').lerp(new Color('#8e1b3d'), pulseGroup2)}
-                        emissive="#ffffff"
-                        emissiveIntensity={0.8}
-                        roughness={0.6}
-                        metalness={0.8}
-                        transparent={true}
-                        opacity={pulseGroup2}
-                    />
-                </mesh>
-            ))}
         </mesh>
     );
 });
+
+// const AnimatedLandMesh = forwardRef(({ geometry, initialColor, isDragging }, ref) => {
+//     const materialRef = useRef();
+//     const pointsRef = useRef([[], []]);
+//     const [pulseGroup1, setPulseGroup1] = useState(1);
+//     const [pulseGroup2, setPulseGroup2] = useState(0);
+
+//     useEffect(() => {
+//         const pointsGroup1 = [];
+//         const pointsGroup2 = [];
+//         const vertices = geometry.attributes.position.array;
+//         const numPoints = 2;
+
+//         for (let i = 0; i < numPoints; i++) {
+//             const vertexIndex = Math.floor(Math.random() * (vertices.length / 2)) * 3;
+//             const x = vertices[vertexIndex];
+//             const y = vertices[vertexIndex + 1];
+//             const z = vertices[vertexIndex + 2];
+
+//             if (i % 2 === 0) {
+//                 pointsGroup1.push([x, y, z]);
+//             } else {
+//                 pointsGroup2.push([x, y, z]);
+//             }
+//         }
+
+//         pointsRef.current = [pointsGroup1, pointsGroup2];
+//     }, [geometry]);
+
+//     useFrame(() => {
+//         const time = performance.now() * 0.001;
+//         const pulseEffectGroup1 = (Math.sin(time * 2) + 1) / 2;
+//         const pulseEffectGroup2 = (Math.sin(time * 2 + Math.PI) + 1) / 2;
+
+//         setPulseGroup1(pulseEffectGroup1);
+//         setPulseGroup2(pulseEffectGroup2);
+//     });
+
+//     return (
+//         <mesh
+//             ref={ref}
+//             geometry={geometry}
+//             onPointerDown={() => {
+//                 setPulseGroup1(1);
+//                 setPulseGroup2(0);
+//             }}
+//             onPointerUp={() => {
+//                 setPulseGroup1(0);
+//                 setPulseGroup2(1);
+//             }}
+//         >
+//             <meshStandardMaterial
+//                 ref={materialRef}
+//                 color={initialColor}
+//                 side={DoubleSide}
+//                 roughness={0.7}
+//                 clearcoat={1.0}
+//                 clearcoatRoughness={0.2}
+//                 wireframe={isDragging}
+//             />
+
+//             {pointsRef.current[0].map((point, index) => (
+//                 <mesh key={`group1-${index}`} position={point}>
+//                     <sphereGeometry args={[0.005, 4, 4]} />
+//                     <meshStandardMaterial
+//                         color={new Color('#ffffff').lerp(new Color('#8e1b3d'), pulseGroup1)}
+//                         emissive="#ffffff"
+//                         emissiveIntensity={0.8}
+//                         roughness={0.6}
+//                         metalness={0.8}
+//                         transparent={true}
+//                         opacity={pulseGroup1}
+//                     />
+//                 </mesh>
+//             ))}
+
+//             {pointsRef.current[1].map((point, index) => (
+//                 <mesh key={`group2-${index}`} position={point}>
+//                     <sphereGeometry args={[0.005, 4, 4]} />
+//                     <meshStandardMaterial
+//                         color={new Color('#ffffff').lerp(new Color('#8e1b3d'), pulseGroup2)}
+//                         emissive="#ffffff"
+//                         emissiveIntensity={0.8}
+//                         roughness={0.6}
+//                         metalness={0.8}
+//                         transparent={true}
+//                         opacity={pulseGroup2}
+//                     />
+//                 </mesh>
+//             ))}
+//         </mesh>
+//     );
+// });
 
 AnimatedLandMesh.displayName = 'AnimatedLandMesh';
 
