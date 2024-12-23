@@ -63,28 +63,6 @@ body {
 a {
     font-weight: variables.$font-weight-medium;
     text-decoration: none;
-
-    &:hover {
-        color: variables.$color-link-hover;
-    }
-
-    // Dark mode link styles
-    body.dark & {
-        color: variables.$color-primary-dark;
-
-        &:hover {
-            color: variables.$color-link-hover-dark;
-        }
-    }
-
-    // Light mode link styles
-    body.light & {
-        color: variables.$color-primary-light;
-
-        &:hover {
-            color: variables.$color-link-hover-light;
-        }
-    }
 }
 
 // ============================
@@ -94,23 +72,13 @@ button {
     border-radius: 8px;
     border: 1px solid transparent;
     padding: variables.$spacing-small variables.$spacing-medium;
-    font-size: 1em;
+    font-size: 1.1em;
     font-weight: variables.$font-weight-medium;
-    cursor: pointer;
+    // cursor: pointer;
     transition:
         border-color 0.25s,
         background-color 0.25s,
         color 0.25s;
-
-    &:hover {
-        background-color: variables.$color-button-background-hover;
-        color: variables.$color-text;
-    }
-
-    &:focus,
-    &:focus-visible {
-        outline: 4px auto -webkit-focus-ring-color;
-    }
 
     // Dark mode button styles
     body.dark & {

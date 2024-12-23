@@ -1,65 +1,74 @@
 @use "variables";
 
-// ============================
-// NAVBAR COMPONENT
-// ============================
-.navbar {
+// =========================================== Navbar Styles ===========================================
+
+// Main container for navbar
+.navbar__container {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 40px;
     position: sticky;
     top: 0;
     z-index: 10;
+    padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease-in-out;
 
-    // Light mode styles
     body.light & {
         background: linear-gradient(45deg, variables.$color-primary-light, variables.$color-secondary-light);
     }
 
-    // Dark mode styles
     body.dark & {
         background: linear-gradient(45deg, variables.$color-primary-dark, variables.$color-secondary-dark);
     }
-
-    // Media queries for responsiveness
-    @media (max-width: variables.$breakpoint-lg) {
-        flex-direction: column;
-        padding: 15px 30px;
-    }
-
-    @media (max-width: variables.$breakpoint-md) {
-        padding: 10px 20px;
-        flex-direction: column;
-    }
 }
 
+// Navbar container
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1050px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+// Left section: Logo
+.navbar__left {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+// Right section: Links, theme toggle, etc.
+.navbar__right {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+}
+
+// Navbar logo styles
 .navbar__logo a {
-    font-size: 2rem;
-    color: variables.$color-text;
+    font-size: variables.$font-size-xxlg;
     font-weight: variables.$font-weight-bold;
     text-decoration: none;
     letter-spacing: 1px;
     text-transform: uppercase;
     transition: color 0.3s ease;
 
-    &:hover {
-        color: variables.$color-accent;
-    }
-
-    // Dark mode logo text color
     body.dark & {
         color: variables.$color-text-dark;
+        &:hover {
+            color: variables.$color-accent;
+        }
     }
 
-    // Light mode logo text color
     body.light & {
-        color: variables.$color-text-light;
+        color: variables.$color-text-dark;
+        &:hover {
+            color: variables.$color-accent;
+        }
     }
 
-    // Media query for smaller screens
     @media (max-width: variables.$breakpoint-xl) {
         font-size: 1.8rem;
     }
@@ -69,159 +78,136 @@
     }
 }
 
+// Navbar links container (visible only when menu is open on mobile)
 .navbar__links {
     list-style: none;
     display: flex;
-    gap: 30px;
+    gap: 15px;
 
-    // Media query for medium screens (tablets)
     @media (max-width: variables.$breakpoint-lg) {
         gap: 20px;
     }
 
-    // Media query for smaller screens
     @media (max-width: variables.$breakpoint-md) {
         display: none;
-        flex-direction: column;
-        gap: 15px;
-        width: 100%;
-        padding: 0;
     }
 }
 
+// Navbar links (links will be stacked in the overlay on small screens)
 .navbar__link {
     text-decoration: none;
-    color: variables.$color-text;
-    font-size: 1.1rem;
-    font-weight: variables.$font-weight-bold;
-    letter-spacing: 1px;
-    text-transform: uppercase;
+    letter-spacing: 0.5px;
     padding: 5px 10px;
     border-radius: 30px;
-    transition:
-        background 0.3s ease,
-        transform 0.3s ease;
+    transition: color 0.4s ease;
 
-    &:hover {
-        background-color: rgba(255, 255, 255, 0.2);
-        transform: scale(1.1);
-    }
-
-    // Dark mode navbar link styles
     body.dark & {
         color: variables.$color-text-dark;
 
         &:hover {
-            background-color: rgba(255, 255, 255, 0.2);
-            color: variables.$color-text-dark;
-        }
-    }
-
-    // Light mode navbar link styles
-    body.light & {
-        color: variables.$color-text-light;
-
-        &:hover {
-            background-color: rgba(255, 255, 255, 0.2);
             color: variables.$color-text-light;
         }
     }
 
-    // Media query for smaller screens
-    @media (max-width: variables.$breakpoint-md) {
-        text-align: center;
-        width: 100%;
+    body.light & {
+        color: variables.$color-text-dark;
+
+        &:hover {
+            color: variables.$color-text-light;
+        }
     }
 }
 
-// ============================
-// HAMBURGER MENU
-// ============================
+// Hamburger menu (for mobile view)
 .navbar__hamburger {
     display: none;
-    flex-direction: column;
-    gap: 5px;
     cursor: pointer;
+    color: variables.$color-text-dark;
+    transition:
+        transform 0.3s ease,
+        color 0.3s ease;
 
-    span {
+    @media (max-width: variables.$breakpoint-md) {
+        display: block;
+        font-size: 24px;
+
+        // Hover effect for the hamburger icon
+        &:hover {
+            color: variables.$color-accent;
+            transform: scale(1.1);
+        }
+    }
+}
+
+// Theme toggle (sun/moon icons)
+.navbar__theme-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+
+    .theme-toggle-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
         width: 30px;
-        height: 4px;
+        height: 30px;
+        border-radius: 50%;
         background-color: variables.$color-text;
-        transition: all 0.3s ease-in-out;
+        transition: background-color 0.3s ease;
     }
 
-    // Media query for smaller screens (Hamburger menu)
+    body.dark & .theme-toggle-icon {
+        background-color: rgba(variables.$color-background-dark, 0.6);
+    }
+
+    body.light & .theme-toggle-icon {
+        background-color: variables.$color-primary-light;
+        color: variables.$color-background-light;
+    }
+
+    &:hover {
+        transform: scale(1.1);
+    }
+}
+
+// Overlay for the links (when burger menu is open)
+.navbar__overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(variables.$color-primary-light, 0.9);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+
     @media (max-width: variables.$breakpoint-md) {
         display: flex;
     }
-
-    // Dark mode hamburger menu color
-    body.dark & span {
-        background-color: variables.$color-text-dark;
-    }
-
-    // Light mode hamburger menu color
-    body.light & span {
-        background-color: variables.$color-text-light;
-    }
 }
 
-// ============================
-// THEME TOGGLE BUTTON STYLES
-// ============================
-.navbar__theme-toggle {
-    background-color: transparent;
-    border: 1px solid variables.$color-primary;
-    padding: variables.$spacing-small variables.$spacing-medium;
-    font-size: 1rem;
-    cursor: pointer;
-    color: variables.$color-text;
-    font-weight: variables.$font-weight-medium;
-    border-radius: 8px;
-    transition:
-        background-color 0.3s ease,
-        color 0.3s ease;
-
-    &:hover {
-        background-color: variables.$color-primary;
-        color: variables.$color-text-light;
-    }
-
-    // Dark mode theme toggle button styles
-    body.dark & {
-        border-color: variables.$color-primary-dark;
-        color: variables.$color-text-dark;
-
-        &:hover {
-            background-color: variables.$color-primary-dark;
-            color: variables.$color-text-light;
-        }
-    }
-
-    // Light mode theme toggle button styles
-    body.light & {
-        border-color: variables.$color-primary-light;
-        color: variables.$color-text-light;
-
-        &:hover {
-            background-color: variables.$color-primary-light;
-            color: variables.$color-text-dark;
-        }
-    }
-
-    // Media query for smaller screens (adjust theme toggle position)
-    @media (max-width: variables.$breakpoint-md) {
-        font-size: 0.9rem;
-        padding: variables.$spacing-small;
-    }
-}
-
-// ============================
-// SHOW/HIDE NAVBAR LINKS (when hamburger is clicked)
-// ============================
-.navbar__links.show {
+// Navbar links in the overlay (centered vertically and horizontally)
+.navbar__overlay .navbar__links {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    align-items: center;
+    gap: 30px;
+    font-size: variables.$font-size-lg;
+    text-align: center;
 }
+
+// Close (exit) icon in the overlay
+.navbar__overlay-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    font-size: 2rem;
+    color: white;
+    transition: color 0.3s ease;
+}
+
+// =========================================== Navbar Styles ===========================================
