@@ -62,6 +62,12 @@
         top: 30%;
         left: 5%;
 
+        @media (max-width: variables.$breakpoint-md) {
+            bottom: 0%;
+            top: 70%;
+            // left: 0%;
+        }
+
         // Title styles
         &--title {
             font-size: 3rem;
@@ -135,7 +141,7 @@
             flex-direction: row;
             flex-wrap: wrap;
 
-            @media (min-width: variables.$breakpoint-md) and (max-width: variables.$breakpoint-md2) {
+            @media (min-width: variables.$breakpoint-md) and (max-width: calc(variables.$breakpoint-md2 - 1px)) {
                 flex-direction: column;
                 gap: 1.2rem;
             }

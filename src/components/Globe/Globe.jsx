@@ -26,6 +26,8 @@ const ensureCounterClockwise = (polygon) => {
 const Globe = () => {
     const [landData, setLandData] = useState([]);
     const [isDragging, setIsDragging] = useState(false);
+    const [globeMaxSize, setGlobeMaxSize] = useState(4);
+    const [globeMinSize, setGlobeMinSize] = useState(3, 5);
     const radius = 1.7;
     const globeRef = useRef();
     const groupRef = useRef();
@@ -37,6 +39,48 @@ const Globe = () => {
         rotationSpeed: isDragging ? 0 : 0.002,
         config: { tension: 200, friction: 20 },
     });
+
+    const [canvasStyle, setCanvasStyle] = useState({
+        position: 'absolute',
+        left: '25%',
+        top: '10%',
+        width: '90vw',
+        height: '100vh',
+    });
+
+    useEffect(() => {
+        const updateStyle = () => {
+            if (window.innerWidth < 768) {
+                // Adjust position for small screens
+                setCanvasStyle({
+                    position: 'absolute',
+                    left: '0%',
+                    top: '-10%',
+                    width: '100vw',
+                    height: '100vh',
+                });
+                setGlobeMaxSize(7);
+                setGlobeMinSize(5.5);
+            } else {
+                // Default position for larger screens
+                setGlobeMaxSize(4);
+                setGlobeMinSize(3.5);
+                setCanvasStyle({
+                    position: 'absolute',
+                    left: '25%',
+                    top: '10%',
+                    width: '90vw',
+                    height: '100vh',
+                });
+            }
+        };
+
+        updateStyle();
+
+        window.addEventListener('resize', updateStyle);
+
+        return () => window.removeEventListener('resize', updateStyle);
+    }, []);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -118,7 +162,8 @@ const Globe = () => {
     };
 
     return (
-        <Canvas style={{ position: 'absolute', left: '25%', top: '10%', width: '90vw', height: '100vh' }}
+        <Canvas
+            style={canvasStyle}
             onPointerLeave={() => document.body.style.cursor = 'default'}
         >
             <ambientLight intensity={1.5} color="white" />
@@ -159,7 +204,7 @@ const Globe = () => {
                     />
                 ))}
 
-                <Billboard>
+                {/* <Billboard>
                     <Text3D ref={textRef} font="/Fonts/Poppins/Poppins_Regular.json" size={0.45} height={0.01} bevelEnabled>
                         ProCom
                         <meshStandardMaterial
@@ -176,10 +221,10 @@ const Globe = () => {
                         color="white"
                         decay={3}
                     />
-                </Billboard>
+                </Billboard> */}
             </animated.group>
 
-            <OrbitControls enableZoom={true} enablePan={false} minDistance={3.5} maxDistance={4} />
+            <OrbitControls enableZoom={true} enablePan={false} minDistance={globeMinSize} maxDistance={globeMaxSize} />
             <RotatingGlobe groupRef={groupRef} rotationSpeed={rotationSpeed} />
         </Canvas>
     );
