@@ -75,31 +75,10 @@ button {
     padding: variables.$spacing-small variables.$spacing-medium;
     font-size: 1.1em;
     font-weight: variables.$font-weight-medium;
-    // cursor: pointer;
+    color: variables.$color-text-dark;
+    cursor: pointer;
     transition:
         border-color 0.25s,
         background-color 0.25s,
         color 0.25s;
-
-    // Dark mode button styles
-    body.dark & {
-        background-color: variables.$color-button-background-dark;
-        color: variables.$color-text-dark;
-
-        &:hover {
-            background-color: variables.$color-button-background-hover-dark;
-            color: variables.$color-text-dark;
-        }
-    }
-
-    // Light mode button styles
-    body.light & {
-        background-color: variables.$color-button-background-light;
-        color: variables.$color-text-light;
-
-        &:hover {
-            background-color: variables.$color-button-background-hover-light;
-            color: variables.$color-text-light;
-        }
-    }
 }
