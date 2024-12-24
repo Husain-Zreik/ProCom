@@ -68,7 +68,7 @@ const NavBar = () => {
                         </span>
                     </div>
 
-                    <FontAwesomeIcon className="navbar__hamburger" icon={faBars} size="22" onClick={toggleMenu} />
+                    <FontAwesomeIcon className="navbar__hamburger" icon={faBars} size="lg" onClick={toggleMenu} />
                 </div>
 
                 {/* Navbar links overlay */}

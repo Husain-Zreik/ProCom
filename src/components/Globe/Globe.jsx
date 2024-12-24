@@ -118,10 +118,11 @@ const Globe = () => {
     };
 
     return (
-        <Canvas style={{ position: 'absolute', left: '25%', top: '10%', width: '90vw', height: '100vh' }}>
+        <Canvas style={{ position: 'absolute', left: '25%', top: '10%', width: '90vw', height: '100vh' }}
+            onPointerLeave={() => document.body.style.cursor = 'default'}
+        >
             <ambientLight intensity={1.5} color="white" />
             <directionalLight position={[5, 5, 5]} intensity={0.8} color="#ffffff" />
-            <Stars radius={300} depth={60} count={5000} factor={7} saturation={0} fade />
 
             <animated.group
                 ref={groupRef}
@@ -130,6 +131,8 @@ const Globe = () => {
                 onPointerDown={handlePointerDown}
                 onPointerUp={handlePointerUp}
             >
+                <Stars radius={300} depth={60} count={5000} factor={7} saturation={0} fade />
+
                 <mesh ref={globeRef}>
                     <sphereGeometry args={[1.62, 128, 128]} />
                     <meshStandardMaterial
@@ -176,7 +179,7 @@ const Globe = () => {
                 </Billboard>
             </animated.group>
 
-            <OrbitControls enableZoom={true} enablePan={false} minDistance={3.5} maxDistance={5} />
+            <OrbitControls enableZoom={true} enablePan={false} minDistance={3.5} maxDistance={4} />
             <RotatingGlobe groupRef={groupRef} rotationSpeed={rotationSpeed} />
         </Canvas>
     );
