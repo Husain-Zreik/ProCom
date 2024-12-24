@@ -118,7 +118,7 @@ const Globe = () => {
     };
 
     return (
-        <Canvas>
+        <Canvas style={{ position: 'absolute', left: '25%', top: '10%', width: '90vw', height: '100vh' }}>
             <ambientLight intensity={1.5} color="white" />
             <directionalLight position={[5, 5, 5]} intensity={0.8} color="#ffffff" />
             <Stars radius={300} depth={60} count={5000} factor={7} saturation={0} fade />

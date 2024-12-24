@@ -93,6 +93,9 @@ $color-button-background-hover: $color-button-background-hover-light;
 // ============================
 $breakpoint-xs: 320px; // Extra small (Mobile)
 $breakpoint-sm: 576px; // Small (Mobile, Landscape, Small Tablets)
-$breakpoint-md: 768px; // Medium (Tablets)
-$breakpoint-lg: 1024px; // Large (Desktops, Laptops)
-$breakpoint-xl: 1200px; // Extra Large (Large Desktops, Wide Screens)
+$breakpoint-md: 767px; // Medium (Tablets)
+$breakpoint-md2: 1024px; // Medium (Desktops, Laptops)
+$breakpoint-lg: 1200px; // Large (Desktops, Laptops)
+$breakpoint-xl: 1440px; // Extra Large (Large Desktops, Wide Screens)
+$breakpoint-xxl: 1800px; // Ultra Large (Ultra-wide Desktops)
+$breakpoint-4k: 2560px; // 4K Screens (Ultra-HD)

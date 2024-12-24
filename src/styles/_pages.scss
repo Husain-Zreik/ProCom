@@ -4,26 +4,164 @@
 // HOME PAGE STYLES
 // ============================
 .page-home {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    position: relative;
     width: 100vw;
     height: 100vh;
-    text-align: center;
-    body.light & {
-        background-color: #030303c2;
+    overflow: hidden;
+
+    body.dark & {
+        background: linear-gradient(45deg, variables.$color-primary-light, variables.$color-background-dark);
     }
-}
 
-.page-home__title {
-    font-size: 3rem;
-    margin-bottom: variables.$spacing-large;
-}
+    // Light mode button styles
+    body.light & {
+        background: linear-gradient(
+            45deg,
+            variables.$color-primary-light,
+            rgba(variables.$color-primary-light, 0.8) 50%,
+            rgba(variables.$color-background-light, 0.1) 150%
+        );
+    }
 
-.page-home__canvas {
-    flex: 1;
-    display: block;
-    width: 100vw;
-    height: 100vh;
+    // Slicing effect
+    &__slice {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 130%;
+        background: variables.$color-primary-light;
+        transform: rotate(120deg);
+        transform-origin: top left;
+        top: 40%;
+        left: 45%;
+        z-index: 1;
+        background-image: linear-gradient(
+            12deg,
+            rgba(193, 193, 193, 0.05) 0%,
+            rgba(193, 193, 193, 0.05) 2%,
+            rgba(129, 129, 129, 0.05) 2%,
+            rgba(129, 129, 129, 0.05) 27%,
+            rgba(185, 185, 185, 0.05) 27%,
+            rgba(185, 185, 185, 0.05) 66%,
+            rgba(83, 83, 83, 0.05) 66%,
+            rgba(83, 83, 83, 0.05) 100%
+        );
+
+        @media (max-width: variables.$breakpoint-md) {
+            display: none;
+        }
+    }
+
+    &__content {
+        position: absolute;
+        z-index: 2;
+        color: #fff;
+        text-align: left;
+        top: 20%;
+        left: 5%;
+        transform: rotate(-120deg);
+
+        // Responsive adjustments for position (top and left)
+        @media (max-width: variables.$breakpoint-md) {
+            display: none;
+        }
+
+        // Position adjustments for larger screens
+        @media (min-width: variables.$breakpoint-md) {
+            top: 7%;
+            left: -3%;
+        }
+
+        @media (min-width: variables.$breakpoint-md2) {
+            top: 10%;
+            left: -3%;
+        }
+
+        @media (min-width: variables.$breakpoint-lg) {
+            top: 15%;
+            left: -2%;
+        }
+
+        @media (min-width: variables.$breakpoint-xl) {
+            top: 15%;
+            left: 0%;
+        }
+
+        @media (min-width: variables.$breakpoint-xxl) {
+            top: 20%;
+            left: 5%;
+        }
+
+        @media (min-width: variables.$breakpoint-4k) {
+            top: 20%;
+            left: 5%;
+        }
+
+        // Title styles
+        &--title {
+            font-size: 3rem;
+            max-width: 400px;
+            margin-bottom: 1rem;
+
+            @media (min-width: variables.$breakpoint-md) {
+                font-size: 2rem;
+            }
+
+            @media (min-width: variables.$breakpoint-md2) {
+                font-size: 2.5rem;
+            }
+
+            @media (min-width: variables.$breakpoint-lg) {
+                font-size: 3rem;
+            }
+
+            @media (min-width: variables.$breakpoint-xl) {
+                font-size: 3.5rem;
+            }
+
+            @media (min-width: variables.$breakpoint-xxl) {
+                font-size: 4rem;
+            }
+
+            @media (min-width: variables.$breakpoint-4k) {
+                font-size: 5rem;
+            }
+        }
+
+        // Subtitle styles
+        &--subtitle {
+            font-size: 1.2rem;
+            max-width: 422px;
+
+            @media (min-width: variables.$breakpoint-md) {
+                font-size: 1rem;
+                max-width: 300px;
+            }
+
+            @media (min-width: variables.$breakpoint-md2) {
+                font-size: 1.2rem;
+                max-width: 350px;
+            }
+
+            @media (min-width: variables.$breakpoint-lg) {
+                font-size: 1.2rem;
+                max-width: 400px;
+            }
+
+            @media (min-width: variables.$breakpoint-xl) {
+                font-size: 1.4rem;
+                max-width: 475px;
+            }
+
+            @media (min-width: variables.$breakpoint-xxl) {
+                font-size: 1.6rem;
+                max-width: 550px;
+            }
+
+            @media (min-width: variables.$breakpoint-4k) {
+                font-size: 2rem;
+                max-width: 700px;
+            }
+        }
+    }
 }

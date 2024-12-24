@@ -5,12 +5,12 @@ import NavBar from './components/NavBar/NavBar';
 function App() {
   return (
     <BrowserRouter>
-      <div className="app">
-        <NavBar />
-        <Routes>
-          <Route path="/" element={<Home />} /> {/* Default Route */}
-        </Routes>
-      </div>
+      {/* <div className="app"> */}
+      <NavBar />
+      <Routes>
+        <Route path="/" element={<Home />} /> {/* Default Route */}
+      </Routes>
+      {/* </div> */}
     </BrowserRouter>
   );
 }
