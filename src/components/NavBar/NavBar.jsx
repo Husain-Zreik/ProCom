@@ -75,7 +75,8 @@ const NavBar = () => {
                 {isMenuOpen && (
                     <div className="navbar__overlay">
                         <div className="navbar__overlay-close" onClick={closeMenu}>
-                            <i className="fa-solid fa-xmark"></i>                        </div>
+                            <i className="fa-solid fa-xmark"></i>
+                        </div>
                         <ul className="navbar__links">
                             <li>
                                 <Link to="/" className="navbar__link" onClick={closeMenu}>
