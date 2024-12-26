@@ -224,7 +224,7 @@ const Globe = () => {
                 </Billboard> */}
             </animated.group>
 
-            <OrbitControls enableZoom={true} enablePan={false} minDistance={globeMinSize} maxDistance={globeMaxSize} />
+            <OrbitControls enableZoom={false} enablePan={false} minDistance={globeMinSize} maxDistance={globeMaxSize} />
             <RotatingGlobe groupRef={groupRef} rotationSpeed={rotationSpeed} />
         </Canvas>
     );
