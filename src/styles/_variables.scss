@@ -4,11 +4,14 @@
 // COLORS - BASE (Common Colors)
 // ============================
 $color-accent: #f3c7da;
+$color-text: #7f8c8d;
 
 // ============================
 // COLORS - DARK MODE
 // ============================
+$color-background-secondary-dark: #333333;
 $color-background-dark: #121212;
+$color-text-secondary-dark: #bdc3c7;
 $color-text-dark: #ffffff;
 $color-primary-dark: #8a1538;
 $color-secondary-dark: #c54a6c;
@@ -17,6 +20,7 @@ $color-secondary-dark: #c54a6c;
 // COLORS - LIGHT MODE
 // ============================
 $color-background-light: #ffffff;
+$color-text-secondary-light: #7f8c8d;
 $color-text-light: #212121;
 $color-primary-light: #8a1538;
 $color-secondary-light: #c54a6c;
