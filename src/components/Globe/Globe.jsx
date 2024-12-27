@@ -61,10 +61,13 @@ const Globe = () => {
                 });
                 setGlobeMaxSize(7);
                 setGlobeMinSize(5.5);
-            } else {
+            } else if (window.innerWidth > 1800) {
+                // setGlobeMinSize(5.5);
+            }
+            else {
                 // Default position for larger screens
                 setGlobeMaxSize(4);
-                setGlobeMinSize(3.5);
+                setGlobeMinSize(3);
                 setCanvasStyle({
                     position: 'absolute',
                     left: '25%',
@@ -163,7 +166,8 @@ const Globe = () => {
 
     return (
         <Canvas
-            style={canvasStyle}
+            className="globe-canvas"
+            // style={canvasStyle}
             onPointerLeave={() => document.body.style.cursor = 'default'}
         >
             <ambientLight intensity={1.5} color="white" />
