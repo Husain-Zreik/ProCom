@@ -55,11 +55,12 @@ const Services = () => {
                 <div className="services__category">
                     <div className="services__category-header">
                         <div className="services__category-icon">
-                            <i className="fa-brands fa-connectdevelop fa-spin-pulse"></i>                    </div>
+                            <i className="fa-brands fa-connectdevelop fa-spin-pulse"></i>
+                        </div>
                         <div className="services__category-content">
-                            <h3 className="services__category-title">Internal Services</h3>
+                            <h3 className="services__category-title">Customized Business Solutions</h3>
                             <p className="services__category-description">
-                                Services offered to the public, customizable or created based on specific requirements.
+                                Tailored internal services designed to meet unique business needs and drive growth.
                             </p>
                         </div>
                     </div>
@@ -79,14 +80,15 @@ const Services = () => {
                 </div>
 
                 {/* External Services Section */}
-                <div className=" services__category ">
+                <div className="services__category">
                     <div className="services__category-header">
                         <div className="services__category-icon">
-                            <i className="fa-brands fa-connectdevelop fa-spin-pulse"></i>                    </div>
+                            <i className="fa-brands fa-connectdevelop fa-spin-pulse"></i>
+                        </div>
                         <div className="services__category-content">
-                            <h3 className="services__category-title">External Services</h3>
+                            <h3 className="services__category-title">User-Focused Digital Products</h3>
                             <p className="services__category-description">
-                                Products developed to deliver a need or service to users.
+                                Specialized external services crafted to deliver solutions that empower and engage users.
                             </p>
                         </div>
                     </div>
