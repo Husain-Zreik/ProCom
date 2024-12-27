@@ -215,4 +215,25 @@
     transition: color 0.3s ease;
 }
 
-// =========================================== Navbar Styles ===========================================
+// =========================================== Footer Styles ===========================================
+
+.footer {
+    background-color: #222;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+
+    &__links {
+        margin-top: 10px;
+
+        a {
+            color: #fff;
+            margin: 0 10px;
+            text-decoration: none;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+}
