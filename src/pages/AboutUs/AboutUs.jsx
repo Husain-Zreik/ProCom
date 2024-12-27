@@ -1,18 +1,28 @@
+import { DotLottieReact } from '@lottiefiles/dotlottie-react';
+import SectionHeader from '../../components/SectionHeader/SectionHeader';
+
 function AboutUs() {
     return (
         <section className="about-us">
-            <h2>About Us</h2>
-            <p>
-                Welcome to our company! We are dedicated to providing top-notch products and services to our customers.
-            </p>
-            <div className="about-us__features">
-                <div className="feature">
-                    <h3>Our Mission</h3>
-                    <p>Deliver excellence in every project we undertake.</p>
-                </div>
-                <div className="feature">
-                    <h3>Our Vision</h3>
-                    <p>To be a leader in our industry and inspire trust in our clients.</p>
+
+            <div className="about-us-container">
+                <SectionHeader title="About ProCom" />
+                <div className="about-us-content">
+                    {/* Left: Lottie animation */}
+                    <div className="about-us-animation">
+                        <DotLottieReact
+                            src="Welcome.json"
+                            loop
+                            autoplay
+                        />
+                    </div>
+
+                    {/* Right: Company description */}
+                    <div className="about-us-description">
+                        <p>
+                            ProCom is a leading software company based in Qatar, focused on empowering businesses with innovative technology solutions. We specialize in custom software development, cloud services, and technical consultation. Our products, including eSIM activation, Bulk SMS marketing, and SaaS, are designed to deliver scalable, reliable, and cost-effective solutions tailored to our clients’ needs. For more details on our services, please explore our website.
+                        </p>
+                    </div>
                 </div>
             </div>
         </section>
