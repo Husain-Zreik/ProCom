@@ -1,4 +1,4 @@
-import { DotLottieReact } from '@lottiefiles/dotlottie-react';
+// import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import SectionHeader from '../../components/SectionHeader/SectionHeader';
 
 function AboutUs() {
@@ -10,11 +10,12 @@ function AboutUs() {
                 <div className="about-us-content">
                     {/* Left: Lottie animation */}
                     <div className="about-us-animation">
-                        <DotLottieReact
+                        {/* <DotLottieReact
                             src="Welcome.json"
                             loop
                             autoplay
-                        />
+                        /> */}
+                        <img src="https://cdn.prod.website-files.com/63e3828f575098222357ad70/641b4a7b49dd292cb0ef5c7e_Untitled%20design%20(9)-p-500.png" alt={"hi"} className="about-us-image" />
                     </div>
 
                     {/* Right: Company description */}

@@ -2,8 +2,7 @@
 
 /* AboutUs.css */
 .about-us {
-    padding: 60px 20px;
-
+    padding: 40px 20px;
     body.dark & {
         background-image: linear-gradient(
                 12deg,
@@ -96,33 +95,69 @@
 .about-us-container {
     max-width: 1200px;
     margin: 0 auto;
+    padding: 0 20px;
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     gap: 50px;
-    margin-bottom: 40px;
 }
 
 .about-us-content {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    flex-wrap: wrap; // Allow wrapping for responsiveness
-    gap: 20px; // Add spacing between elements when wrapping
+    gap: 20px;
+
+    @media (max-width: variables.$breakpoint-md) {
+        flex-direction: column;
+        text-align: center;
+        width: 100%;
+    }
+
+    @media (max-width: variables.$breakpoint-xs) {
+        gap: 10px;
+    }
 }
 
 .about-us-animation {
     flex: 1;
     max-width: 45%;
-    text-align: center; // Center the animation on smaller screens
+    text-align: center;
+    width: 100%;
+
+    @media (max-width: variables.$breakpoint-md2) {
+        max-width: 100%;
+    }
+}
+
+.about-us-image {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 8px;
+    height: auto;
+    object-fit: cover;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+
+    @media (max-width: variables.$breakpoint-md2) {
+        height: 350px;
+    }
+
+    @media (max-width: variables.$breakpoint-md) {
+        height: 300px;
+    }
+
+    @media (max-width: variables.$breakpoint-xs) {
+        height: 250px;
+    }
 }
 
 .about-us-description {
     flex: 1;
-    max-width: 45%;
-    font-size: 18px;
+    max-width: 50%;
+    width: 100%;
+    font-size: 20px;
     line-height: 1.6;
-    padding-left: 30px;
-    text-align: left;
+    text-align: justify;
 
     body.dark & {
         color: variables.$color-text-secondary-dark;
@@ -131,46 +166,22 @@
     body.light & {
         color: variables.$color-text-secondary-light;
     }
-}
 
-.about-us-description p {
-    font-size: 20px;
-}
-
-@media (max-width: 1024px) {
-    .about-us-animation,
-    .about-us-description {
-        max-width: 100%; // Allow elements to take full width
+    @media (max-width: variables.$breakpoint-md2) {
+        font-size: 18px;
     }
 
-    .about-us-content {
-        flex-direction: column; // Stack elements vertically
-        text-align: center; // Center-align text
+    @media (max-width: variables.$breakpoint-md) {
+        font-size: 18px;
+        margin-top: 20px;
+        text-align: center;
+        max-width: 100%;
     }
 
-    .about-us-description {
-        padding-left: 0;
-        margin-top: 20px; // Add spacing between stacked elements
-    }
-}
-
-@media (max-width: 768px) {
-    .about-us-container {
-        padding: 0 20px; // Add padding for smaller screens
-    }
-
-    .about-us-description p {
-        font-size: 18px; // Reduce font size for better readability
-    }
-}
-
-@media (max-width: 480px) {
-    .about-us-content {
-        gap: 10px; // Reduce the gap for smaller screens
-    }
-
-    .about-us-description p {
-        font-size: 16px; // Further reduce font size for smaller screens
+    @media (max-width: variables.$breakpoint-xs) {
+        max-width: 100%;
+        font-size: 16px;
         line-height: 1.4;
+        text-align: center;
     }
 }

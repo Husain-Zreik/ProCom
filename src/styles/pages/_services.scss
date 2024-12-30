@@ -4,6 +4,7 @@
 // Services PAGE STYLES
 // ============================
 .services {
+    padding: 40px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -103,7 +104,6 @@
     align-items: center;
     gap: 40px;
     max-width: 1200px;
-    padding: 40px 0;
     @media (max-width: variables.$breakpoint-md) {
         padding: 10px 0;
     }
