@@ -221,21 +221,117 @@
 // =========================================== Footer Styles ===========================================
 
 .footer {
-    background-color: #222;
-    color: #fff;
-    padding: 20px;
-    text-align: center;
+    padding: 40px 20px;
+    font-size: 0.9rem;
+
+    body.light & {
+        background-image: white;
+        color: variables.$color-text-secondary-light;
+    }
+    body.dark & {
+        color: variables.$color-text-secondary-dark;
+        background-color: variables.$color-background-secondary-dark;
+    }
+
+    &__content {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: flex-start;
+        max-width: 1200px;
+        margin: 0 auto;
+        gap: 20px;
+
+        @media (max-width: 768px) {
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+
+    &__brand {
+        flex: 1;
+
+        h2 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+
+            body.light & {
+                color: variables.$color-text-secondary-light;
+            }
+            body.dark & {
+                color: variables.$color-text-secondary-dark;
+            }
+        }
+
+        p {
+            font-size: 0.9rem;
+            line-height: 1.5;
+            max-width: 300px;
+        }
+    }
 
     &__links {
-        margin-top: 10px;
+        flex: 1;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        justify-content: center;
 
         a {
-            color: #fff;
-            margin: 0 10px;
             text-decoration: none;
+            transition: color 0.3s ease;
+            body.light & {
+                color: variables.$color-text-secondary-light;
+                &:hover {
+                    color: variables.$color-primary-dark;
+                }
+            }
+            body.dark & {
+                color: variables.$color-text-secondary-dark;
+                &:hover {
+                    color: variables.$color-primary-dark;
+                }
+            }
+        }
+    }
 
-            &:hover {
-                text-decoration: underline;
+    &__social {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+
+        a {
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+            body.light & {
+                color: variables.$color-text-secondary-light;
+                &:hover {
+                    color: variables.$color-primary-dark;
+                }
+            }
+            body.dark & {
+                color: variables.$color-text-secondary-dark;
+                &:hover {
+                    color: variables.$color-primary-dark;
+                }
+            }
+        }
+    }
+
+    &__bottom {
+        margin-top: 20px;
+        text-align: center;
+        border-top: 1px solid #444;
+        padding-top: 10px;
+
+        p {
+            font-size: 0.8rem;
+            body.light & {
+                color: variables.$color-text-secondary-light;
+            }
+            body.dark & {
+                color: variables.$color-text-secondary-dark;
             }
         }
     }
@@ -277,6 +373,7 @@
     position: relative;
     body.light & {
         color: #333;
+        color: variables.$color-text-light;
     }
     body.dark & {
         color: variables.$color-text-dark;
