@@ -65,14 +65,14 @@
     body.dark & {
         color: variables.$color-text-dark;
         &:hover {
-            color: variables.$color-accent;
+            color: variables.$color-secondary;
         }
     }
 
     body.light & {
         color: variables.$color-text-dark;
         &:hover {
-            color: variables.$color-accent;
+            color: variables.$color-secondary;
         }
     }
 
@@ -106,6 +106,7 @@
     letter-spacing: 0.5px;
     padding: 5px 10px;
     border-radius: 30px;
+    cursor: pointer;
     transition: color 0.4s ease;
 
     body.dark & {
@@ -140,7 +141,7 @@
 
         // Hover effect for the hamburger icon
         &:hover {
-            color: variables.$color-accent;
+            color: variables.$color-secondary;
             transform: scale(1.1);
         }
     }

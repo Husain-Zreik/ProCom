@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
-import { Link } from "react-router-dom";
+import { Link } from "react-scroll";
 
 const NavBar = () => {
     const [theme, setTheme] = useState("light");
@@ -38,24 +38,16 @@ const NavBar = () => {
                     {/* Navbar links */}
                     <ul className={`navbar__links ${isMenuOpen ? "show" : ""}`}>
                         <li>
-                            <Link to="/" className="navbar__link">
-                                Home
-                            </Link>
+                            <Link to="home" spy={true} smooth={true} duration={500} className="navbar__link">Home</Link>
                         </li>
                         <li>
-                            <Link to="/about" className="navbar__link">
-                                About
-                            </Link>
+                            <Link to="about" spy={true} smooth={true} duration={500} className="navbar__link">About</Link>
                         </li>
                         <li>
-                            <Link to="/services" className="navbar__link">
-                                Services
-                            </Link>
+                            <Link to="services" spy={true} smooth={true} duration={500} className="navbar__link">Services</Link>
                         </li>
                         <li>
-                            <Link to="/contact" className="navbar__link">
-                                Contact
-                            </Link>
+                            <Link to="contact" spy={true} smooth={true} duration={500} className="navbar__link">Contact</Link>
                         </li>
                     </ul>
                 </div>
@@ -77,26 +69,18 @@ const NavBar = () => {
                         <div className="navbar__overlay-close" onClick={closeMenu}>
                             <i className="fa-solid fa-xmark"></i>
                         </div>
-                        <ul className="navbar__links">
+                        <ul className="navbar__links" >
                             <li>
-                                <Link to="/" className="navbar__link" onClick={closeMenu}>
-                                    Home
-                                </Link>
+                                <Link to="home" spy={true} smooth={true} duration={500} className="navbar__link" onClick={closeMenu}>Home</Link>
                             </li>
                             <li>
-                                <Link to="/about" className="navbar__link" onClick={closeMenu}>
-                                    About
-                                </Link>
+                                <Link to="about" spy={true} smooth={true} duration={500} className="navbar__link" onClick={closeMenu}>About</Link>
                             </li>
                             <li>
-                                <Link to="/services" className="navbar__link" onClick={closeMenu}>
-                                    Services
-                                </Link>
+                                <Link to="services" spy={true} smooth={true} duration={500} className="navbar__link" onClick={closeMenu}>Services</Link>
                             </li>
                             <li>
-                                <Link to="/contact" className="navbar__link" onClick={closeMenu}>
-                                    Contact
-                                </Link>
+                                <Link to="contact" spy={true} smooth={true} duration={500} className="navbar__link" onClick={closeMenu}>Contact</Link>
                             </li>
                         </ul>
                     </div>

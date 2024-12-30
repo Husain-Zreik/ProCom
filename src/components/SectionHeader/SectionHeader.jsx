@@ -11,7 +11,7 @@ const SectionHeader = ({ title, subtitle }) => {
                 </div>
             </div>
             <div className="section-icons">
-                <div style={{ backgroundColor: '#c54a5c' }} className="icon-shape">
+                <div style={{ backgroundColor: '#bd2b52' }} className="icon-shape">
                     <i className="fa-solid fa-signature fa-fade"></i>
                 </div>
                 <div className="icon-shape">
