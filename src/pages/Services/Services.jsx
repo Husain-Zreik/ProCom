@@ -1,3 +1,5 @@
+import SectionHeader from "../../components/SectionHeader/SectionHeader";
+
 const Services = () => {
     const services = [
         {
@@ -43,15 +45,13 @@ const Services = () => {
 
     return (
         <div className="services" id="services">
-            <div className="services__header">
-                <h2 className="services__title">Our Services</h2>
-                <p className="services__subtitle">
-                    Explore the range of services we offer to help elevate your business.
-                </p>
-            </div>
 
-            {/* Internal Services Section */}
             <div className="services__container">
+                <SectionHeader
+                    title="Our Services"
+                />
+
+                {/* Internal Services Section */}
                 <div className="services__category">
                     <div className="services__category-header">
                         <div className="services__category-icon">
