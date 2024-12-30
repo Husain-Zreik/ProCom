@@ -1,6 +1,6 @@
 @use "../variables";
 .arrivals {
-    padding: 40px 0px;
+    padding: 10px 0px;
     background-image: linear-gradient(
             248deg,
             rgba(104, 104, 104, 0.05) 0%,
@@ -33,13 +33,13 @@
     &__container {
         max-width: 1200px;
         margin: 0 auto;
-        padding: 0 16px;
+        padding: 20px;
     }
 
     &__carousel {
         max-width: 1140px;
         margin: 0 auto;
-        padding: 40px 16px;
+        padding: 40px 0px;
 
         .slick-slide {
             padding: 0 16px;
@@ -52,9 +52,9 @@
 
     &__banner {
         display: flex;
-        flex-direction: column;
+        flex-direction: column-reverse;
         align-items: center;
-        padding: 16px;
+        padding-bottom: 16px;
         background-color: variables.$color-background;
         border-radius: 10px;
         box-shadow: 0 6px 20px rgba(variables.$color-primary, 0.08);

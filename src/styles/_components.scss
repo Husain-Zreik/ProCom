@@ -251,17 +251,19 @@
     padding: 20px 0;
     border-bottom: 2px solid #e0e0e0;
     width: 100%;
-    // border: 1px solid red;
 }
 
 .section-header-right {
     flex: 1;
     display: flex;
     align-items: center;
+
+    @media (max-width: variables.$breakpoint-sm) {
+        justify-content: center;
+    }
 }
 
 .section-header-content {
-    // border: 1px solid red;
     display: flex;
     flex-direction: column;
     padding: 0 10px;
@@ -309,6 +311,10 @@
     justify-content: center;
     flex-shrink: 0;
     gap: 10px;
+
+    @media (max-width: variables.$breakpoint-sm) {
+        display: none;
+    }
 }
 
 .icon-shape {
@@ -321,8 +327,4 @@
     background-color: #871839;
     border-radius: 50%;
     transform: rotate(45deg);
-
-    @media (max-width: variables.$breakpoint-sm) {
-        display: none;
-    }
 }
