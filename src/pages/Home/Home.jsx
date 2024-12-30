@@ -1,17 +1,26 @@
 import Globe from '../../components/Globe/Globe';
+import { Link } from 'react-scroll';
 
 const Home = () => {
     return (
-        <div className="page-home">
-            <div className="page-home__container">
-                <div className="page-home__slice"></div>
-                <div className="page-home__content">
-                    <h1 className="page-home__content--title">ProCom </h1>
-                    <p className="page-home__content--subtitle">Crafting Code, Elevating Elegance.</p>
+        <div id='home' className="home">
+            <div className="home__container">
+                <div className="home__slice"></div>
+                <div className="home__content">
+                    <h1 className="home__title">ProCom</h1>
+                    <p className="home__subtitle">Crafting Code, Elevating Elegance.</p>
+                    <div className="home__buttons">
+                        <button className="home__button">
+                            <Link to="about" spy={true} smooth={true} duration={500}>
+                                Learn More
+                            </Link>
+                        </button>
 
-                    <div className="page-home__content--buttons">
-                        <button className="page-home__content--button">Learn More</button>
-                        <button className="page-home__content--button">Get Started</button>
+                        <button className="home__button">
+                            <Link to="services" spy={true} smooth={true} duration={500}>
+                                Get Started
+                            </Link>
+                        </button>
                     </div>
                 </div>
                 <Globe />
@@ -19,5 +28,4 @@ const Home = () => {
         </div>
     );
 };
-
 export default Home;
