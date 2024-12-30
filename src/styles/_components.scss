@@ -7,6 +7,8 @@
     display: flex;
     position: absolute;
     top: 0;
+    left: 0;
+    right: 0;
     width: 100%;
     z-index: 10;
     padding: 20px;
@@ -235,5 +237,91 @@
                 text-decoration: underline;
             }
         }
+    }
+}
+
+// =========================================== Section Header Styles ===========================================
+
+/* SectionHeader.css */
+.section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 0;
+    border-bottom: 2px solid #e0e0e0;
+    width: 100%;
+    // border: 1px solid red;
+}
+
+.section-header-right {
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+.section-header-content {
+    // border: 1px solid red;
+    display: flex;
+    flex-direction: column;
+    padding: 0 10px;
+}
+
+.section-title {
+    font-size: 36px;
+    font-weight: 700;
+    margin: 0;
+    line-height: 1.4;
+    position: relative;
+    body.light & {
+        color: #333;
+    }
+    body.dark & {
+        color: variables.$color-text-dark;
+    }
+
+    @media (max-width: variables.$breakpoint-md) {
+        font-size: 30px;
+    }
+
+    @media (max-width: variables.$breakpoint-sm) {
+        font-size: 24px;
+    }
+}
+
+.section-subtitle {
+    font-size: 16px;
+    color: variables.$color-secondary-light;
+
+    @media (max-width: variables.$breakpoint-md) {
+        display: none;
+        font-size: 14px;
+    }
+
+    @media (max-width: variables.$breakpoint-sm) {
+        font-size: 12px;
+    }
+}
+
+.section-icons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    gap: 10px;
+}
+
+.icon-shape {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 35px;
+    height: 35px;
+    color: #fff;
+    background-color: #871839;
+    border-radius: 50%;
+    transform: rotate(45deg);
+
+    @media (max-width: variables.$breakpoint-sm) {
+        display: none;
     }
 }

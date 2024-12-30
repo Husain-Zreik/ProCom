@@ -71,14 +71,11 @@ a {
 // ============================
 button {
     border-radius: 8px;
-    border: 1px solid transparent;
+    border: none;
     padding: variables.$spacing-small variables.$spacing-medium;
     font-size: 1.1em;
     font-weight: variables.$font-weight-medium;
     color: variables.$color-text-dark;
     cursor: pointer;
-    transition:
-        border-color 0.25s,
-        background-color 0.25s,
-        color 0.25s;
+    transition: all 0.4s;
 }
