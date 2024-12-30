@@ -13,7 +13,7 @@ function AboutUs() {
                             loop
                             autoplay
                         /> */}
-                        <img src="https://cdn.prod.website-files.com/63e3828f575098222357ad70/641b4a7b49dd292cb0ef5c7e_Untitled%20design%20(9)-p-500.png" alt={"hi"} className="about__image" />
+                        <img src="https://i.pinimg.com/736x/25/97/91/259791bed227fa612f46a9c46530766d.jpg" alt={"hi"} className="about__image" />
                     </div>
 
                     <div className="about__text">

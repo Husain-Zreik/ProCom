@@ -9,21 +9,21 @@ const NewArrivals = () => {
             title: "AI Integration: Revolutionize Your Workflow",
             description:
                 "Our cutting-edge AI integration service empowers your business to automate mundane tasks, analyze data in real-time, and deliver smarter insights. Stay ahead in your industry with seamless technology designed for you.",
-            image: "https://cdn.prod.website-files.com/63e3828f575098222357ad70/641b4a7b49dd292cb0ef5c7e_Untitled%20design%20(9)-p-500.png",
+            image: "https://i.pinimg.com/736x/5a/6d/ec/5a6decdffbab6f9aad17ba5c02debc62.jpg",
             link: "/services/ai-integration",
         },
         {
             title: "Smart Dashboard: Real-Time Insights",
             description:
                 "Introducing our new Smart Dashboard that brings real-time analytics and user-friendly insights directly to your fingertips. Make data-driven decisions effortlessly.",
-            image: "https://cdn.prod.website-files.com/63e3828f575098222357ad70/648ae6ac6c902afee33f9630_uix-p-500.png",
+            image: "https://i.pinimg.com/736x/87/17/da/8717daaeb5837fcd9fd15e9d8cecd8b0.jpg",
             link: "/products/smart-dashboard",
         },
         {
             title: "Version 2.0: Enhanced Performance",
             description:
                 "Our latest update, Version 2.0, delivers improved performance, new features, and an enhanced user experience across all platforms.",
-            image: "https://cdn.prod.website-files.com/63e3828f575098222357ad70/641b4c0dcca89bfab16ce7ab_Untitled%20design%20(10)-p-500.png",
+            image: "https://i.pinimg.com/736x/1a/b6/ba/1ab6bae07f2b6cefab8c61e9f3b72004.jpg",
             link: "/updates/version-2.0",
         },
     ];

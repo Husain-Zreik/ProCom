@@ -4,7 +4,7 @@ import NavBar from './components/NavBar/NavBar';
 import Home from './pages/Home/Home';
 import NewArrivals from './pages/NewArrivals/NewArrivals';
 import AboutUs from './pages/AboutUs/AboutUs';
-// import ContactUs from './pages/ContactUs/ContactUs';
+import ContactUs from './pages/ContactUs/ContactUs';
 import Footer from './components/Footer/Footer';
 
 function App() {
@@ -17,7 +17,7 @@ function App() {
           <AboutUs />
           <NewArrivals />
           <Services />
-          {/* <ContactUs /> */}
+          <ContactUs />
           <Footer />
         </BrowserRouter>
       </div>
