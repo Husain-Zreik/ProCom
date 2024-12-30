@@ -1,6 +1,11 @@
+import { useState, useCallback } from "react";
 import SectionHeader from "../../components/SectionHeader/SectionHeader";
 
 const Services = () => {
+    // State to track hovered service index and category
+    const [hoveredIndex, setHoveredIndex] = useState(null);
+    const [hoveredCategory, setHoveredCategory] = useState(null);  // Track category
+
     const services = [
         {
             title: "eSIM Activation",
@@ -8,6 +13,7 @@ const Services = () => {
             icon: "fas fa-sim-card",
             link: "https://pcgesim.com/welcome/",
             category: "external",
+            animation: "flip",  // Specify animation
         },
         {
             title: "Bulk SMS Marketing",
@@ -15,18 +21,21 @@ const Services = () => {
             icon: "fas fa-envelope",
             link: "https://bulksms.pcglobalco.com",
             category: "external",
+            animation: "shake",  // Specify animation
         },
         {
             title: "Custom Software Development",
             description: "Scalable and reliable software solutions tailored to meet specific business requirements.",
             icon: "fas fa-laptop-code",
             category: "internal",
+            animation: "bounce",  // Specify animation
         },
         {
             title: "Software as a Service (SaaS)",
             description: "Access on-demand tools and services without the need for extensive infrastructure investment.",
             icon: "fas fa-cloud",
             category: "internal",
+            animation: "beat-fade",  // No animation
         },
         {
             title: "PCG MS Marketing Service",
@@ -34,22 +43,40 @@ const Services = () => {
             icon: "fas fa-comments",
             link: "https://ms.pcglobalco.com",
             category: "external",
+            animation: "bounce",  // Specify animation
         },
         {
             title: "Technical Consultation",
             description: "Receive expert guidance and tailored strategies to optimize your system performance, and ensure scalability for future growth.",
             icon: "fas fa-tools",
             category: "internal",
+            animation: "shake",  // Specify animation
         },
     ];
 
+    // Callback to handle hover state change
+    const handleMouseEnter = useCallback((index, category) => {
+        setHoveredIndex(index);
+        setHoveredCategory(category);  // Set the hovered category
+    }, []);
+
+    const handleMouseLeave = useCallback(() => {
+        setHoveredIndex(null);
+        setHoveredCategory(null);  // Reset on hover leave
+    }, []);
+
+    // Utility function to decide the animation class
+    const getIconClass = (index, category, animation) => {
+        if (hoveredIndex === index && hoveredCategory === category && animation !== "none") {
+            return `fa-${animation}`;
+        }
+        return '';
+    };
+
     return (
         <div className="services" id="services">
-
             <div className="services__container">
-                <SectionHeader
-                    title="Our Services"
-                />
+                <SectionHeader title="Our Services" />
 
                 {/* Internal Services Section */}
                 <div className="services__category">
@@ -68,9 +95,14 @@ const Services = () => {
                         {services
                             .filter(service => service.category === "internal")
                             .map((service, index) => (
-                                <div className="service__item" key={index}>
+                                <div
+                                    className="service__item"
+                                    key={index}
+                                    onMouseEnter={() => handleMouseEnter(index, 'internal')}  // Hover enter
+                                    onMouseLeave={handleMouseLeave}
+                                >
                                     <div className="service__icon">
-                                        <i className={service.icon}></i>
+                                        <i className={`${service.icon} ${getIconClass(index, 'internal', service.animation)}`}></i>
                                     </div>
                                     <h3 className="service__title">{service.title}</h3>
                                     <p className="service__description">{service.description}</p>
@@ -96,9 +128,14 @@ const Services = () => {
                         {services
                             .filter(service => service.category === "external")
                             .map((service, index) => (
-                                <div className="service__item" key={index}>
+                                <div
+                                    className="service__item"
+                                    key={index}
+                                    onMouseEnter={() => handleMouseEnter(index, 'external')}  // Hover enter
+                                    onMouseLeave={handleMouseLeave}
+                                >
                                     <div className="service__icon">
-                                        <i className={service.icon}></i>
+                                        <i className={`${service.icon} ${getIconClass(index, 'external', service.animation)}`}></i>
                                     </div>
                                     <h3 className="service__title">{service.title}</h3>
                                     <p className="service__description">{service.description}</p>
