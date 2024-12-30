@@ -96,18 +96,24 @@
 .about-us-container {
     max-width: 1200px;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    margin-bottom: 40px;
 }
 
 .about-us-content {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 40px;
+    flex-wrap: wrap; // Allow wrapping for responsiveness
+    gap: 20px; // Add spacing between elements when wrapping
 }
 
 .about-us-animation {
     flex: 1;
     max-width: 45%;
+    text-align: center; // Center the animation on smaller screens
 }
 
 .about-us-description {
@@ -116,7 +122,8 @@
     font-size: 18px;
     line-height: 1.6;
     padding-left: 30px;
-    text-align: center;
+    text-align: left;
+
     body.dark & {
         color: variables.$color-text-secondary-dark;
     }
@@ -130,14 +137,40 @@
     font-size: 20px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
+    .about-us-animation,
+    .about-us-description {
+        max-width: 100%; // Allow elements to take full width
+    }
+
     .about-us-content {
-        flex-direction: column;
-        text-align: center;
+        flex-direction: column; // Stack elements vertically
+        text-align: center; // Center-align text
     }
 
     .about-us-description {
         padding-left: 0;
-        margin-top: 20px;
+        margin-top: 20px; // Add spacing between stacked elements
+    }
+}
+
+@media (max-width: 768px) {
+    .about-us-container {
+        padding: 0 20px; // Add padding for smaller screens
+    }
+
+    .about-us-description p {
+        font-size: 18px; // Reduce font size for better readability
+    }
+}
+
+@media (max-width: 480px) {
+    .about-us-content {
+        gap: 10px; // Reduce the gap for smaller screens
+    }
+
+    .about-us-description p {
+        font-size: 16px; // Further reduce font size for smaller screens
+        line-height: 1.4;
     }
 }
