@@ -113,6 +113,10 @@
     @media (max-width: variables.$breakpoint-md) {
         font-size: 60px;
     }
+
+    body.dark & {
+        color: variables.$color-secondary-dark;
+    }
 }
 
 .services__category {
@@ -145,6 +149,9 @@
     font-size: 24px;
     font-weight: bold;
     color: variables.$color-primary-dark;
+    body.dark & {
+        color: variables.$color-secondary-dark;
+    }
 
     @media (max-width: variables.$breakpoint-md) {
         font-size: 22px;

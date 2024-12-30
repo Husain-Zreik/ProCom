@@ -11,7 +11,25 @@
             rgba(12, 12, 12, 0.05) 66.666%,
             rgba(12, 12, 12, 0.05) 99.999%
         ),
-        linear-gradient(90deg, rgba(255, 90, 142, 0.597), rgb(255, 56, 132));
+        linear-gradient(
+            48deg,
+            rgba(104, 104, 104, 0.05) 0%,
+            rgba(104, 104, 104, 0.05) 33.333%,
+            rgba(12, 12, 12, 0.05) 33.333%,
+            rgba(12, 12, 12, 0.05) 66.666%,
+            rgba(12, 12, 12, 0.05) 66.666%,
+            rgba(12, 12, 12, 0.05) 99.999%
+        ),
+        linear-gradient(
+            158deg,
+            rgba(104, 104, 104, 0.05) 0%,
+            rgba(104, 104, 104, 0.05) 33.333%,
+            rgba(12, 12, 12, 0.05) 33.333%,
+            rgba(12, 12, 12, 0.05) 66.666%,
+            rgba(12, 12, 12, 0.05) 66.666%,
+            rgba(12, 12, 12, 0.05) 99.999%
+        ),
+        linear-gradient(90deg, rgba(255, 90, 142, 0.597), rgba(252, 23, 103, 0.819));
 
     &__content {
         max-width: 1200px;
@@ -171,7 +189,6 @@
             }
 
             .btn-submit {
-                background-color: variables.$color-button-background;
                 color: variables.$color-background-light;
                 font-size: 1rem;
                 padding: 0.8rem 2rem;
@@ -179,6 +196,12 @@
                 border: none;
                 cursor: pointer;
                 transition: background-color 0.3s ease;
+                body.light & {
+                    background-color: variables.$color-button-background;
+                }
+                body.dark & {
+                    background-color: variables.$color-secondary-dark;
+                }
 
                 &:hover {
                     background-color: variables.$color-button-background-hover;

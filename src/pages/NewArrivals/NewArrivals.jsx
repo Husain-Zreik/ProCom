@@ -42,7 +42,7 @@ const NewArrivals = () => {
     return (
         <div className="arrivals">
             <div className="arrivals__container">
-                <SectionHeader title="New Arrivals" />
+                <SectionHeader title="New Arrivals" isColored={true} />
                 <div className="arrivals__carousel">
                     <Slider {...settings}>
                         {arrivals.map((arrival, index) => (

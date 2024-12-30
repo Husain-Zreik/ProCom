@@ -39,7 +39,7 @@ const ContactUs = () => {
     return (
         <section id="contact" className="contact">
             <div className="contact__content">
-                <SectionHeader title="Contact Us" />
+                <SectionHeader title="Contact Us" isColored={true} />
 
                 <div className="contact__layout">
                     {/* Map and Contact Info Combined in a Card */}

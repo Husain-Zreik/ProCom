@@ -28,7 +28,7 @@
             rgba(12, 12, 12, 0.05) 66.666%,
             rgba(12, 12, 12, 0.05) 99.999%
         ),
-        linear-gradient(90deg, rgba(255, 90, 142, 0.597), rgb(255, 56, 132));
+        linear-gradient(90deg, rgba(248, 53, 115, 0.597), rgba(252, 23, 103, 0.819));
 
     &__container {
         max-width: 1200px;
@@ -138,7 +138,6 @@
 
     &__button {
         display: inline-block;
-        background-color: variables.$color-button-background;
         color: variables.$color-background-light;
         padding: 12px 24px;
         text-decoration: none;
@@ -146,6 +145,13 @@
         font-weight: variables.$font-weight-medium;
         border-radius: 8px;
         transition: all 0.3s ease;
+
+        body.light & {
+            background-color: variables.$color-button-background;
+        }
+        body.dark & {
+            background-color: variables.$color-secondary-dark;
+        }
 
         &:hover {
             background-color: variables.$color-button-background-hover;
