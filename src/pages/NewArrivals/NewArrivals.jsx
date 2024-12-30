@@ -40,19 +40,18 @@ const NewArrivals = () => {
     };
 
     return (
-        <div className="new-arrivals">
-            <div className="new-arrivals-container">
+        <div className="arrivals">
+            <div className="arrivals__container">
                 <SectionHeader title="New Arrivals" />
-
-                <div className="new-arrivals-carousel">
+                <div className="arrivals__carousel">
                     <Slider {...settings}>
                         {arrivals.map((arrival, index) => (
-                            <div key={index} className="new-arrivals-banner">
-                                <img src={arrival.image} alt={arrival.title} className="banner-image" />
-                                <div className="banner-content">
-                                    <h1>{arrival.title}</h1>
-                                    <p>{arrival.description}</p>
-                                    <a href={arrival.link} className="cta-button">
+                            <div key={index} className="arrivals__banner">
+                                <img src={arrival.image} alt={arrival.title} className="arrivals__image" />
+                                <div className="arrivals__content">
+                                    <h1 className="arrivals__title">{arrival.title}</h1>
+                                    <p className="arrivals__description">{arrival.description}</p>
+                                    <a href={arrival.link} className="arrivals__button">
                                         Explore the Service
                                     </a>
                                 </div>
