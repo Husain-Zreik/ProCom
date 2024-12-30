@@ -1,8 +1,8 @@
 @use "../variables";
 
 /* AboutUs.css */
-.about-us {
-    padding: 40px 20px;
+.about {
+    padding: 40px 20px 80px;
     body.dark & {
         background-image: linear-gradient(
                 12deg,
@@ -90,98 +90,97 @@
             ),
             linear-gradient(90deg, rgb(255, 255, 255), rgb(255, 255, 255));
     }
-}
 
-.about-us-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    gap: 50px;
-}
-
-.about-us-content {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-
-    @media (max-width: variables.$breakpoint-md) {
+    &__container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px 20px;
+        display: flex;
         flex-direction: column;
+        gap: 50px;
+    }
+
+    &__content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+
+        @media (max-width: variables.$breakpoint-md) {
+            flex-direction: column;
+            text-align: center;
+            width: 100%;
+        }
+
+        @media (max-width: variables.$breakpoint-xs) {
+            gap: 10px;
+        }
+    }
+
+    &__media {
+        flex: 1;
+        max-width: 45%;
         text-align: center;
         width: 100%;
+
+        @media (max-width: variables.$breakpoint-md2) {
+            max-width: 100%;
+        }
     }
 
-    @media (max-width: variables.$breakpoint-xs) {
-        gap: 10px;
-    }
-}
+    &__image {
+        width: 100%;
+        max-width: 400px;
+        border-radius: 8px;
+        height: auto;
+        object-fit: cover;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 
-.about-us-animation {
-    flex: 1;
-    max-width: 45%;
-    text-align: center;
-    width: 100%;
+        @media (max-width: variables.$breakpoint-md2) {
+            height: 350px;
+        }
 
-    @media (max-width: variables.$breakpoint-md2) {
-        max-width: 100%;
-    }
-}
+        @media (max-width: variables.$breakpoint-md) {
+            height: 300px;
+        }
 
-.about-us-image {
-    width: 100%;
-    max-width: 400px;
-    border-radius: 8px;
-    height: auto;
-    object-fit: cover;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-
-    @media (max-width: variables.$breakpoint-md2) {
-        height: 350px;
+        @media (max-width: variables.$breakpoint-xs) {
+            height: 250px;
+        }
     }
 
-    @media (max-width: variables.$breakpoint-md) {
-        height: 300px;
-    }
+    &__text {
+        flex: 1;
+        max-width: 50%;
+        width: 100%;
+        font-size: 20px;
+        line-height: 1.6;
 
-    @media (max-width: variables.$breakpoint-xs) {
-        height: 250px;
-    }
-}
+        body.dark & {
+            color: variables.$color-text-secondary-dark;
+        }
 
-.about-us-description {
-    flex: 1;
-    max-width: 50%;
-    width: 100%;
-    font-size: 20px;
-    line-height: 1.6;
-    text-align: justify;
+        body.light & {
+            color: variables.$color-text-secondary-light;
+        }
 
-    body.dark & {
-        color: variables.$color-text-secondary-dark;
-    }
+        @media (max-width: variables.$breakpoint-md2) {
+            font-size: 18px;
+        }
 
-    body.light & {
-        color: variables.$color-text-secondary-light;
-    }
+        @media (max-width: variables.$breakpoint-md) {
+            font-size: 18px;
+            margin-top: 20px;
+            text-align: center;
+            max-width: 100%;
+            text-align: justify;
+        }
 
-    @media (max-width: variables.$breakpoint-md2) {
-        font-size: 18px;
-    }
-
-    @media (max-width: variables.$breakpoint-md) {
-        font-size: 18px;
-        margin-top: 20px;
-        text-align: center;
-        max-width: 100%;
-    }
-
-    @media (max-width: variables.$breakpoint-xs) {
-        max-width: 100%;
-        font-size: 16px;
-        line-height: 1.4;
-        text-align: center;
+        @media (max-width: variables.$breakpoint-xs) {
+            max-width: 100%;
+            font-size: 16px;
+            line-height: 1.4;
+            text-align: center;
+        }
     }
 }
