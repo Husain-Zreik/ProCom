@@ -1,12 +1,12 @@
 import PropTypes from 'prop-types';
 
-const SectionHeader = ({ title, subtitle, isColored }) => {
+const SectionHeader = ({ title, subtitle, isColored = false }) => {
     return (
         <div className={`section-header ${isColored ? 'colored' : ''}`}>
             <div className="section-header-right">
                 <i
                     style={{
-                        color: isColored ? '#fbbbcd' : '#c54a5c', // Change color dynamically
+                        color: isColored ? '#fbbbcd' : '#c54a5c',
                     }}
                     className="fa-solid fa-circle-notch fa-spin fa-2xl"
                 ></i>
@@ -19,7 +19,7 @@ const SectionHeader = ({ title, subtitle, isColored }) => {
                 <div
                     style={{
                         backgroundColor: isColored ? '#fbbbcd' : '#bd2b52',
-                        color: isColored ? '#333' : '#ffff'
+                        color: isColored ? '#333' : '#ffff',
                     }}
                     className="icon-shape"
                 >
@@ -43,12 +43,8 @@ const SectionHeader = ({ title, subtitle, isColored }) => {
 
 SectionHeader.propTypes = {
     title: PropTypes.string.isRequired,
-    subtitle: PropTypes.string, // Optional subtitle prop
-    isColored: PropTypes.bool, // New prop to control background coloring
-};
-
-SectionHeader.defaultProps = {
-    isColored: false, // Default to not colored
+    subtitle: PropTypes.string,
+    isColored: PropTypes.bool,
 };
 
 export default SectionHeader;

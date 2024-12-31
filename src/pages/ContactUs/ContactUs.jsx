@@ -67,7 +67,7 @@ const ContactUs = () => {
                     {/* Contact Form */}
                     <div className="contact__form">
                         <h3>Contact Form</h3>
-                        <form onSubmit={handleSubmit}>
+                        <form onSubmit={handleSubmit} id="contact-us" autoComplete='on'>
                             <input
                                 type="text"
                                 name="name"

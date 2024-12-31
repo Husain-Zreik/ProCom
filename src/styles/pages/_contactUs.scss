@@ -198,15 +198,19 @@
                 transition: background-color 0.3s ease;
                 body.light & {
                     background-color: variables.$color-button-background;
+                    &:hover {
+                        background-color: variables.$color-secondary-dark;
+                        transform: translateY(-2px);
+                        box-shadow: 0 4px 12px rgba(variables.$color-primary, 0.2);
+                    }
                 }
                 body.dark & {
                     background-color: variables.$color-secondary-dark;
-                }
-
-                &:hover {
-                    background-color: variables.$color-button-background-hover;
-                    transform: translateY(-2px);
-                    box-shadow: 0 4px 12px rgba(variables.$color-primary, 0.2);
+                    &:hover {
+                        background-color: variables.$color-primary-dark;
+                        transform: translateY(-2px);
+                        box-shadow: 0 4px 12px rgba(variables.$color-primary, 0.2);
+                    }
                 }
             }
         }

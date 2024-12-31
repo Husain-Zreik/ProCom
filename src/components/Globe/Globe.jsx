@@ -243,7 +243,7 @@ const AnimatedLandMesh = forwardRef(({ geometry, initialColor, isDragging }, ref
             const t = (Math.sin(time) + 1) / 2;
 
             const color1 = new Color('#8A1538');
-            const color2 = new Color('#db3d6d');
+            const color2 = new Color('#db0042');
 
             materialRef.current.color.lerpColors(color1, color2, t);
         }

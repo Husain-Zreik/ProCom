@@ -1,3 +1,5 @@
+import { Link } from "react-scroll";
+
 function Footer() {
     return (
         <footer className="footer">
@@ -7,9 +9,9 @@ function Footer() {
                     <p>Empowering innovation and excellence.</p>
                 </div>
                 <div className="footer__links">
-                    <a href="#about">About Us</a>
-                    <a href="#services">Services</a>
-                    <a href="#contact">Contact</a>
+                    <Link to="about" spy={true} smooth={true} duration={500} >About Us</Link>
+                    <Link to="services" spy={true} smooth={true} duration={500} >Services</Link>
+                    <Link to="contact" spy={true} smooth={true} duration={500} >Contact</Link>
                     <a href="#privacy-policy">Privacy Policy</a>
                     <a href="#terms-of-service">Terms of Service</a>
                 </div>

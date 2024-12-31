@@ -105,7 +105,13 @@
         font-size: 28px;
         margin-bottom: 8px;
         font-weight: bold;
-        color: variables.$color-secondary-dark;
+
+        body.light & {
+            color: variables.$color-primary-light;
+        }
+        body.dark & {
+            color: variables.$color-secondary-dark;
+        }
 
         @media (max-width: variables.$breakpoint-md2) {
             font-size: 24px;
@@ -148,15 +154,19 @@
 
         body.light & {
             background-color: variables.$color-button-background;
+            &:hover {
+                background-color: variables.$color-secondary-light;
+                transform: translateY(-2px);
+                box-shadow: 0 4px 12px rgba(variables.$color-primary, 0.2);
+            }
         }
         body.dark & {
             background-color: variables.$color-secondary-dark;
-        }
-
-        &:hover {
-            background-color: variables.$color-button-background-hover;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(variables.$color-primary, 0.2);
+            &:hover {
+                background-color: variables.$color-primary-dark;
+                transform: translateY(-2px);
+                box-shadow: 0 4px 12px rgba(variables.$color-primary, 0.2);
+            }
         }
 
         @media (max-width: variables.$breakpoint-sm) {
