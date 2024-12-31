@@ -1,3 +1,4 @@
+import { ReactSVG } from 'react-svg';
 import Globe from '../../components/Globe/Globe';
 import { Link } from 'react-scroll';
 
@@ -7,8 +8,13 @@ const Home = () => {
             <div className="home__container">
                 <div className="home__slice"></div>
                 <div className="home__content">
-                    <h1 className="home__title">ProCom</h1>
-                    <p className="home__subtitle">Crafting Code, Elevating Elegance.</p>
+                    <div className="home__header">
+                        <ReactSVG src="/PRC-Logo/P-logo2.svg" className="home__logo" />
+                        <h1 className="home__title">OCOM</h1>
+                    </div>
+                    <p className="home__subtitle">
+                        &quot;<b>PROCOM:</b> Innovating solutions, empowering connections. Your partner in building the digital future.&quot;
+                    </p>
                     <div className="home__buttons">
                         <button className="home__button">
                             <Link to="about" spy={true} smooth={true} duration={500}>

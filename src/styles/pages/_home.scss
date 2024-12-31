@@ -17,9 +17,8 @@
     body.light & {
         background: linear-gradient(
             45deg,
-            variables.$color-primary-light,
-            rgba(variables.$color-primary-light, 0.8) 50%,
-            rgba(variables.$color-background-light, 0.1) 150%
+            rgba(variables.$color-primary-light, 0.9) 50%,
+            rgba(variables.$color-secondary-light, 0.1) 150%
         );
     }
 
@@ -43,34 +42,67 @@
         top: 35%;
         left: 50%;
         z-index: 1;
-        background-image:
-            variables.$color-secondary-dark 10%,
-            linear-gradient(
-                248deg,
-                rgba(104, 104, 104, 0.05) 0%,
-                rgba(104, 104, 104, 0.05) 33.333%,
-                rgba(12, 12, 12, 0.05) 33.333%,
-                rgba(12, 12, 12, 0.05) 66.666%,
-                rgba(12, 12, 12, 0.05) 66.666%,
-                rgba(12, 12, 12, 0.05) 99.999%
-            ),
-            linear-gradient(
-                48deg,
-                rgba(104, 104, 104, 0.05) 0%,
-                rgba(104, 104, 104, 0.05) 33.333%,
-                rgba(12, 12, 12, 0.05) 33.333%,
-                rgba(12, 12, 12, 0.05) 99.999%
-            ),
-            linear-gradient(
-                128deg,
-                rgba(104, 104, 104, 0.05) 0%,
-                rgba(104, 104, 104, 0.05) 33.333%,
-                rgba(12, 12, 12, 0.05) 33.333%,
-                rgba(12, 12, 12, 0.05) 66.666%,
-                rgba(12, 12, 12, 0.05) 66.666%,
-                rgba(12, 12, 12, 0.05) 99.999%
-            ),
-            linear-gradient(90deg, rgba(248, 53, 115, 0.164), rgba(171, 3, 62, 0.592));
+        body.light & {
+            background-image:
+                variables.$color-secondary-dark 10%,
+                linear-gradient(
+                    248deg,
+                    rgba(104, 104, 104, 0.05) 0%,
+                    rgba(104, 104, 104, 0.05) 33.333%,
+                    rgba(12, 12, 12, 0.05) 33.333%,
+                    rgba(12, 12, 12, 0.05) 66.666%,
+                    rgba(12, 12, 12, 0.05) 66.666%,
+                    rgba(12, 12, 12, 0.05) 99.999%
+                ),
+                linear-gradient(
+                    48deg,
+                    rgba(104, 104, 104, 0.05) 0%,
+                    rgba(104, 104, 104, 0.05) 33.333%,
+                    rgba(12, 12, 12, 0.05) 33.333%,
+                    rgba(12, 12, 12, 0.05) 99.999%
+                ),
+                linear-gradient(
+                    128deg,
+                    rgba(104, 104, 104, 0.05) 0%,
+                    rgba(104, 104, 104, 0.05) 33.333%,
+                    rgba(12, 12, 12, 0.05) 33.333%,
+                    rgba(12, 12, 12, 0.05) 66.666%,
+                    rgba(12, 12, 12, 0.05) 66.666%,
+                    rgba(12, 12, 12, 0.05) 99.999%
+                ),
+                linear-gradient(90deg, rgba(248, 53, 115, 0.164), rgba(171, 3, 62, 0.592));
+        }
+
+        body.dark & {
+            background-image:
+                variables.$color-secondary-dark 10%,
+                linear-gradient(
+                    248deg,
+                    rgba(104, 104, 104, 0.05) 0%,
+                    rgba(104, 104, 104, 0.05) 33.333%,
+                    rgba(12, 12, 12, 0.05) 33.333%,
+                    rgba(12, 12, 12, 0.05) 66.666%,
+                    rgba(12, 12, 12, 0.05) 66.666%,
+                    rgba(12, 12, 12, 0.05) 99.999%
+                ),
+                linear-gradient(
+                    48deg,
+                    rgba(104, 104, 104, 0.05) 0%,
+                    rgba(104, 104, 104, 0.05) 33.333%,
+                    rgba(12, 12, 12, 0.05) 33.333%,
+                    rgba(12, 12, 12, 0.05) 99.999%
+                ),
+                linear-gradient(
+                    128deg,
+                    rgba(104, 104, 104, 0.05) 0%,
+                    rgba(104, 104, 104, 0.05) 33.333%,
+                    rgba(12, 12, 12, 0.05) 33.333%,
+                    rgba(12, 12, 12, 0.05) 66.666%,
+                    rgba(12, 12, 12, 0.05) 66.666%,
+                    rgba(12, 12, 12, 0.05) 99.999%
+                ),
+                linear-gradient(90deg, rgba(248, 53, 115, 0.164), rgba(171, 3, 62, 0.592));
+        }
 
         @media (max-width: calc(variables.$breakpoint-md - 1px)) {
             display: none;
@@ -85,19 +117,77 @@
         z-index: 2;
         color: #fff;
         text-align: left;
-        top: 30%;
+        top: 20%;
         left: 5%;
 
         @media (max-width: calc(variables.$breakpoint-md - 1px)) {
             bottom: 0%;
-            top: 70%;
+            top: 67%;
         }
+    }
+
+    &__header {
+        display: flex;
+        // flex-direction: column;
+        align-items: flex-end;
+        // align-items: center;
+        margin-bottom: 3rem;
+        gap: 5px;
+
+        @media (max-width: calc(variables.$breakpoint-md - 1px)) {
+            margin-bottom: 1.5rem;
+        }
+    }
+
+    &__logo {
+        display: flex;
+        align-items: center;
+
+        svg {
+            width: 110px;
+            height: auto;
+
+            @media (min-width: variables.$breakpoint-xs) {
+                width: 30px;
+            }
+
+            @media (min-width: variables.$breakpoint-sm) {
+                width: 50px;
+            }
+
+            @media (min-width: variables.$breakpoint-md) {
+                width: 60px;
+            }
+
+            @media (min-width: variables.$breakpoint-lg) {
+                width: 70px;
+            }
+
+            @media (min-width: variables.$breakpoint-xl) {
+                width: 110px;
+            }
+
+            @media (min-width: variables.$breakpoint-xxl) {
+                width: 1100px;
+            }
+
+            @media (min-width: variables.$breakpoint-4k) {
+                width: 130px;
+            }
+        }
+
+        // Remove any margin or padding that might affect positioning
+        margin: 0;
+        padding: 0;
     }
 
     // Title styles
     &__title {
+        margin: 0;
+        display: inline-flex;
+        align-items: center;
         font-size: 2rem;
-        margin-bottom: 1rem;
+        // color: rgb(255, 212, 224);
 
         @media (min-width: variables.$breakpoint-md) {
             font-size: 2.5rem;
@@ -127,36 +217,37 @@
     // Subtitle styles
     &__subtitle {
         font-size: 1.1rem;
-        max-width: 325px;
+        // max-width: 300px;
+        // text-align: justify;
 
         @media (min-width: variables.$breakpoint-md) {
-            font-size: 1.2rem;
-            max-width: 325px;
+            font-size: 1rem;
+            max-width: 250px;
         }
 
         @media (min-width: variables.$breakpoint-md2) {
             font-size: 1.4rem;
-            max-width: 400px;
+            max-width: 380px;
         }
 
         @media (min-width: variables.$breakpoint-lg) {
             font-size: 1.5rem;
-            max-width: 550px;
+            max-width: 420px;
         }
 
         @media (min-width: variables.$breakpoint-xl) {
             font-size: 1.7rem;
-            max-width: 575px;
+            max-width: 470px;
         }
 
         @media (min-width: variables.$breakpoint-xxl) {
             font-size: 1.8rem;
-            max-width: 625px;
+            max-width: 500px;
         }
 
         @media (min-width: variables.$breakpoint-4k) {
             font-size: 2rem;
-            max-width: 650px;
+            max-width: 550px;
         }
     }
 

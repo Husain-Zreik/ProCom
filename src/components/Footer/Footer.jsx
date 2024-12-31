@@ -17,7 +17,7 @@ function Footer() {
                 </div>
                 <div className="footer__social">
                     <a href="https://twitter.com" aria-label="Twitter">
-                        <i className="fa-brands fa-x-twitter"></i>
+                        <i className="fa-brands fa-twitter"></i>
                     </a>
                     <a href="https://facebook.com" aria-label="Facebook">
                         <i className="fa-brands fa-facebook"></i>

@@ -10,8 +10,8 @@
     left: 0;
     right: 0;
     width: 100%;
-    z-index: 10;
-    padding: 20px;
+    z-index: 1;
+    padding: 0px 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease-in-out;
 
@@ -33,7 +33,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 1050px;
+    max-width: 1350px;
     width: 100%;
     margin: 0 auto;
 }
@@ -43,6 +43,7 @@
     display: flex;
     align-items: center;
     gap: 40px;
+    // border: 1px solid red;
 }
 
 // Right section: Links, theme toggle, etc.
@@ -52,37 +53,34 @@
     align-items: center;
     gap: 20px;
 }
+// Logo container
+.navbar__logo {
+    display: flex;
+    justify-content: center; // Center the logo horizontally
+    align-items: center; // Center the logo vertically
+    height: 65px; // Remove fixed height
+    width: 65px;
+}
 
-// Navbar logo styles
-.navbar__logo a {
-    font-size: variables.$font-size-xxlg;
-    font-weight: variables.$font-weight-bold;
-    text-decoration: none;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    transition: color 0.3s ease;
+/* Company Logo */
+.company-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 75px;
+    height: 75px;
+    // border: 1px solid #333; // Add border for visibility
 
-    body.dark & {
-        color: variables.$color-text-dark;
-        &:hover {
-            color: variables.$color-secondary;
-        }
+    /* Interactive States */
+    &:hover {
+        transform: scale(1.05);
+        opacity: 0.9;
     }
 
-    body.light & {
-        color: variables.$color-text-dark;
-        &:hover {
-            color: variables.$color-secondary;
-        }
-    }
-
-    @media (max-width: variables.$breakpoint-xl) {
-        font-size: 1.8rem;
-    }
-
-    @media (max-width: variables.$breakpoint-md) {
-        font-size: 1.5rem;
-    }
+    /* Adjustments for Small Screens */
+    // @media (max-width: 768px) {
+    //     width: 100px;
+    // }
 }
 
 // Navbar links container (visible only when menu is open on mobile)
@@ -238,7 +236,7 @@
         flex-wrap: wrap;
         justify-content: space-between;
         align-items: flex-start;
-        max-width: 1200px;
+        max-width: 1150px;
         margin: 0 auto;
         gap: 20px;
 
