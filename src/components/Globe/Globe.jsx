@@ -1,9 +1,9 @@
 /* eslint-disable react/no-unknown-property */
-import { DoubleSide, BufferGeometry, Float32BufferAttribute, Color } from 'three';
-import { Billboard, OrbitControls, Stars, Text3D } from '@react-three/drei';
+import { DoubleSide, BufferGeometry, Float32BufferAttribute, Color, TextureLoader } from 'three';
+import { Billboard, OrbitControls, Stars } from '@react-three/drei';
 import { useState, useEffect, useMemo, useRef, forwardRef } from 'react';
 import { animated, useSpring } from '@react-spring/three';
-import { Canvas, useFrame } from '@react-three/fiber';
+import { Canvas, useFrame, useLoader } from '@react-three/fiber';
 import PropTypes from 'prop-types';
 import earcut from 'earcut';
 
@@ -40,41 +40,16 @@ const Globe = () => {
         config: { tension: 200, friction: 20 },
     });
 
-    const [canvasStyle, setCanvasStyle] = useState({
-        position: 'absolute',
-        left: '25%',
-        top: '10%',
-        width: '90vw',
-        height: '100vh',
-    });
-
     useEffect(() => {
         const updateStyle = () => {
             if (window.innerWidth < 768) {
-                // Adjust position for small screens
-                setCanvasStyle({
-                    position: 'absolute',
-                    left: '0%',
-                    top: '-10%',
-                    width: '100vw',
-                    height: '100vh',
-                });
                 setGlobeMaxSize(7);
                 setGlobeMinSize(5.5);
-            } else if (window.innerWidth > 1800) {
-                // setGlobeMinSize(5.5);
             }
             else {
                 // Default position for larger screens
-                setGlobeMaxSize(4);
-                setGlobeMinSize(3);
-                setCanvasStyle({
-                    position: 'absolute',
-                    left: '25%',
-                    top: '10%',
-                    width: '90vw',
-                    height: '100vh',
-                });
+                setGlobeMaxSize(3.8);
+                setGlobeMinSize(2);
             }
         };
 
@@ -207,6 +182,21 @@ const Globe = () => {
                         isDragging={isDragging}
                     />
                 ))}
+                <Billboard>
+
+                    <mesh
+                        position={[0, 0, 0]}
+                        rotation={[0, 0, 0]}
+                        scale={[1, 1.2, 1.2]}
+                    >
+                        <planeGeometry args={[1, 1]} />
+                        <meshBasicMaterial
+                            map={useLoader(TextureLoader, '/PRC-Logo/P-logo2.svg')}
+                            transparent={true}
+                            side={DoubleSide}
+                        />
+                    </mesh>
+                </Billboard>
 
                 {/* <Billboard>
                     <Text3D ref={textRef} font="/Fonts/Poppins/Poppins_Regular.json" size={0.45} height={0.01} bevelEnabled>
