@@ -17,8 +17,8 @@
     body.light & {
         background: linear-gradient(
             45deg,
-            rgba(variables.$color-primary-light, 0.9) 50%,
-            rgba(variables.$color-secondary-light, 0.1) 150%
+            rgba(variables.$color-secondary-dark, 0.4) 10%,
+            rgba(variables.$color-secondary-light, 1) 100%
         );
     }
 
@@ -43,18 +43,7 @@
         left: 50%;
         z-index: 1;
         body.light & {
-            background-image:
-                variables.$color-secondary-dark 10%,
-                linear-gradient(
-                    248deg,
-                    rgba(104, 104, 104, 0.05) 0%,
-                    rgba(104, 104, 104, 0.05) 33.333%,
-                    rgba(12, 12, 12, 0.05) 33.333%,
-                    rgba(12, 12, 12, 0.05) 66.666%,
-                    rgba(12, 12, 12, 0.05) 66.666%,
-                    rgba(12, 12, 12, 0.05) 99.999%
-                ),
-                linear-gradient(
+            background-image: linear-gradient(
                     48deg,
                     rgba(104, 104, 104, 0.05) 0%,
                     rgba(104, 104, 104, 0.05) 33.333%,
@@ -62,7 +51,7 @@
                     rgba(12, 12, 12, 0.05) 99.999%
                 ),
                 linear-gradient(
-                    128deg,
+                    11deg,
                     rgba(104, 104, 104, 0.05) 0%,
                     rgba(104, 104, 104, 0.05) 33.333%,
                     rgba(12, 12, 12, 0.05) 33.333%,
@@ -70,22 +59,15 @@
                     rgba(12, 12, 12, 0.05) 66.666%,
                     rgba(12, 12, 12, 0.05) 99.999%
                 ),
-                linear-gradient(90deg, rgba(248, 53, 115, 0.164), rgba(171, 3, 62, 0.592));
+                linear-gradient(
+                    90deg,
+                    rgba(variables.$color-secondary-dark, 0.8) 50%,
+                    rgba(variables.$color-secondary-light, 0.1) 150%
+                );
         }
 
         body.dark & {
-            background-image:
-                variables.$color-secondary-dark 10%,
-                linear-gradient(
-                    248deg,
-                    rgba(104, 104, 104, 0.05) 0%,
-                    rgba(104, 104, 104, 0.05) 33.333%,
-                    rgba(12, 12, 12, 0.05) 33.333%,
-                    rgba(12, 12, 12, 0.05) 66.666%,
-                    rgba(12, 12, 12, 0.05) 66.666%,
-                    rgba(12, 12, 12, 0.05) 99.999%
-                ),
-                linear-gradient(
+            background-image: linear-gradient(
                     48deg,
                     rgba(104, 104, 104, 0.05) 0%,
                     rgba(104, 104, 104, 0.05) 33.333%,
@@ -93,7 +75,7 @@
                     rgba(12, 12, 12, 0.05) 99.999%
                 ),
                 linear-gradient(
-                    128deg,
+                    11deg,
                     rgba(104, 104, 104, 0.05) 0%,
                     rgba(104, 104, 104, 0.05) 33.333%,
                     rgba(12, 12, 12, 0.05) 33.333%,
@@ -101,7 +83,11 @@
                     rgba(12, 12, 12, 0.05) 66.666%,
                     rgba(12, 12, 12, 0.05) 99.999%
                 ),
-                linear-gradient(90deg, rgba(248, 53, 115, 0.164), rgba(171, 3, 62, 0.592));
+                linear-gradient(
+                    90deg,
+                    rgba(variables.$color-secondary-dark, 0.8) 50%,
+                    rgba(variables.$color-secondary-light, 0.1) 150%
+                );
         }
 
         @media (max-width: calc(variables.$breakpoint-md - 1px)) {
@@ -120,22 +106,25 @@
         top: 20%;
         left: 5%;
 
+        @media (min-width: variables.$breakpoint-xxl) {
+            top: 25%;
+        }
+
         @media (max-width: calc(variables.$breakpoint-md - 1px)) {
             bottom: 0%;
-            top: 67%;
+            top: 75%;
         }
     }
 
     &__header {
         display: flex;
-        // flex-direction: column;
         align-items: flex-end;
-        // align-items: center;
         margin-bottom: 3rem;
-        gap: 5px;
+        gap: 3px;
 
         @media (max-width: calc(variables.$breakpoint-md - 1px)) {
             margin-bottom: 1.5rem;
+            display: none;
         }
     }
 
@@ -168,17 +157,13 @@
             }
 
             @media (min-width: variables.$breakpoint-xxl) {
-                width: 1100px;
+                width: 120px;
             }
 
             @media (min-width: variables.$breakpoint-4k) {
                 width: 130px;
             }
         }
-
-        // Remove any margin or padding that might affect positioning
-        margin: 0;
-        padding: 0;
     }
 
     // Title styles
@@ -187,7 +172,6 @@
         display: inline-flex;
         align-items: center;
         font-size: 2rem;
-        // color: rgb(255, 212, 224);
 
         @media (min-width: variables.$breakpoint-md) {
             font-size: 2.5rem;
@@ -217,8 +201,11 @@
     // Subtitle styles
     &__subtitle {
         font-size: 1.1rem;
-        // max-width: 300px;
-        // text-align: justify;
+
+        @media (max-width: calc(variables.$breakpoint-md - 1px)) {
+            font-size: 1.1rem;
+            max-width: 450px;
+        }
 
         @media (min-width: variables.$breakpoint-md) {
             font-size: 1rem;
@@ -264,44 +251,46 @@
         }
     }
 
-    // Button styles
+    // Base button styles
     &__button {
         color: #fff;
         padding: 0.8rem 2rem;
         font-size: 1.2rem;
         font-weight: bold;
         box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
 
         body.light & {
             background: linear-gradient(45deg, variables.$color-secondary-light 10%, variables.$color-primary-light);
-            &:hover {
+            background: variables.$color-secondary-light;
+        }
+        body.dark & {
+            background: linear-gradient(45deg, variables.$color-secondary-light 10%, variables.$color-primary-light);
+            background: variables.$color-secondary-light;
+        }
+
+        &:hover {
+            transform: translateY(-2px);
+            box-shadow:
+                0px 6px 8px rgba(0, 0, 0, 0.15),
+                0px 4px 6px rgba(0, 0, 0, 0.1);
+
+            body.light & {
                 background: linear-gradient(
                     75deg,
                     variables.$color-secondary-light,
                     variables.$color-secondary-light 80%
                 );
-                transform: translateY(-2px);
-                box-shadow:
-                    0px 6px 8px rgba(0, 0, 0, 0.15),
-                    0px 4px 6px rgba(0, 0, 0, 0.1);
             }
-        }
-        body.dark & {
-            background: linear-gradient(45deg, variables.$color-secondary-dark 10%, variables.$color-primary-light);
-            &:hover {
+            body.dark & {
                 background: linear-gradient(
                     75deg,
                     variables.$color-secondary-dark,
                     variables.$color-secondary-dark 40%
                 );
-                transform: translateY(-2px);
-                box-shadow:
-                    0px 6px 8px rgba(0, 0, 0, 0.15),
-                    0px 4px 6px rgba(0, 0, 0, 0.1);
             }
         }
 
-        /* Active state */
         &:active {
             transform: translateY(1px);
             box-shadow:
@@ -314,9 +303,9 @@
         }
 
         // Button size adjustments for smaller screens
-        @media (max-width: variables.$breakpoint-md) {
-            font-size: 1rem;
-            padding: 0.6rem 1.5rem;
+        @media (max-width: calc(variables.$breakpoint-md - 1px)) {
+            font-size: 1.1rem;
+            padding: 0.8rem 1.5rem;
         }
 
         @media (min-width: variables.$breakpoint-md2) {
