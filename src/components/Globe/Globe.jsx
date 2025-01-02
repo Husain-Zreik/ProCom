@@ -28,6 +28,7 @@ const Globe = () => {
     const [isDragging, setIsDragging] = useState(false);
     const [globeMaxSize, setGlobeMaxSize] = useState(4);
     const [globeMinSize, setGlobeMinSize] = useState(3, 5);
+    const [isSmallScreen, setIsSmallScreen] = useState(false);
     const radius = 1.7;
     const globeRef = useRef();
     const groupRef = useRef();
@@ -42,7 +43,12 @@ const Globe = () => {
 
     useEffect(() => {
         const updateStyle = () => {
-            if (window.innerWidth < 768) {
+            if (window.innerWidth < 428) {
+                setIsSmallScreen(true);
+                setGlobeMaxSize(7);
+                setGlobeMinSize(5.5);
+            }
+            else if (window.innerWidth < 768) {
                 setGlobeMaxSize(7);
                 setGlobeMinSize(5.5);
             }
@@ -50,6 +56,7 @@ const Globe = () => {
                 // Default position for larger screens
                 setGlobeMaxSize(3.8);
                 setGlobeMinSize(2);
+                setIsSmallScreen(false);
             }
         };
 
@@ -142,7 +149,6 @@ const Globe = () => {
     return (
         <Canvas
             className="globe-canvas"
-            // style={canvasStyle}
             onPointerLeave={() => document.body.style.cursor = 'default'}
         >
             <ambientLight intensity={1.5} color="white" />
@@ -155,21 +161,30 @@ const Globe = () => {
                 onPointerDown={handlePointerDown}
                 onPointerUp={handlePointerUp}
             >
-                <Stars radius={300} depth={60} count={5000} factor={7} saturation={0} fade />
-
+                {!isSmallScreen && (
+                    <Stars
+                        radius={250}
+                        depth={40}
+                        count={2000}
+                        factor={10}
+                        saturation={0}
+                        fade
+                    />
+                )}
                 <mesh ref={globeRef}>
-                    <sphereGeometry args={[1.62, 128, 128]} />
+                    <sphereGeometry args={[1.62, 80, 80]} />
                     <meshStandardMaterial
-                        color="#1b3d8e"
-                        emissive="#11275b"
-                        emissiveIntensity={0.2}
+                        color="#121212"
+                        emissive="black"
+                        emissiveIntensity={0.9}
                         transparent={true}
-                        opacity={0.2}
+                        opacity={0.15}
                         roughness={0.5}
                         metalness={0.8}
                         clearcoat={1.0}
                         clearcoatRoughness={0.2}
                         wireframe={true}
+
                     />
                 </mesh>
 
@@ -182,18 +197,20 @@ const Globe = () => {
                         isDragging={isDragging}
                     />
                 ))}
-                <Billboard>
 
+                <Billboard>
                     <mesh
                         position={[0, 0, 0]}
                         rotation={[0, 0, 0]}
-                        scale={[1, 1.2, 1.2]}
+                        scale={[1.3, 1.5, 0]}
                     >
                         <planeGeometry args={[1, 1]} />
                         <meshBasicMaterial
-                            map={useLoader(TextureLoader, '/PRC-Logo/P-logo2.svg')}
+                            map={useLoader(TextureLoader, '/PRC-Logo/Globe-logo.svg')}
                             transparent={true}
                             side={DoubleSide}
+
+
                         />
                     </mesh>
                 </Billboard>
@@ -232,8 +249,11 @@ const AnimatedLandMesh = forwardRef(({ geometry, initialColor, isDragging }, ref
             const time = performance.now() * 0.001;
             const t = (Math.sin(time) + 1) / 2;
 
-            const color1 = new Color('#8A1538');
+            // const color1 = new Color('#8A1538');
             const color2 = new Color('#db0042');
+
+            const color1 = new Color('rgb(204, 32, 83)');  // Lighter shade ofrgb(204, 32, 83)
+            // const color2 = new Color('#FF6699');
 
             materialRef.current.color.lerpColors(color1, color2, t);
         }
