@@ -23,6 +23,7 @@
     "@turf/turf": "^7.1.0",
     "d3-geo": "^3.1.1",
     "earcut": "^3.0.1",
+    "emailjs-com": "^3.2.0",
     "font-awesome": "^4.7.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
@@ -31,6 +32,7 @@
     "react-slick": "^0.30.3",
     "react-svg": "^16.2.0",
     "slick-carousel": "^1.8.1",
+    "styled-components": "^6.1.13",
     "three": "^0.171.0"
   },
   "devDependencies": {

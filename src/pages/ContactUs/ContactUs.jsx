@@ -1,20 +1,22 @@
 import { useState } from 'react';
 import SectionHeader from '../../components/SectionHeader/SectionHeader';
+import emailjs from 'emailjs-com';
 
 const ContactUs = () => {
     const [formData, setFormData] = useState({
         name: '',
         email: '',
         subject: '',
-        message: ''
+        message: '',
     });
     const [error, setError] = useState('');
+    const [successMessage, setSuccessMessage] = useState('');
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setFormData((prevState) => ({
             ...prevState,
-            [name]: value
+            [name]: value,
         }));
     };
 
@@ -31,8 +33,29 @@ const ContactUs = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (validateForm()) {
-            // Add form submission logic here (e.g., API call)
-            console.log(formData);
+            // Send email using EmailJS
+            emailjs
+                .send(
+                    'service_rcsm9bp', // Replace with your EmailJS service ID
+                    'template_spqfpus', // Replace with your EmailJS template ID
+                    formData,
+                    'yxzMuZg96NTDLBrgS' // Replace with your EmailJS public key
+                )
+                .then(
+                    () => {
+                        setSuccessMessage('Your message has been sent successfully!');
+                        setFormData({
+                            name: '',
+                            email: '',
+                            subject: '',
+                            message: '',
+                        });
+                    },
+                    (error) => {
+                        setError('Failed to send your message. Please try again later.');
+                        console.error('EmailJS error:', error);
+                    }
+                );
         }
     };
 
@@ -67,7 +90,7 @@ const ContactUs = () => {
                     {/* Contact Form */}
                     <div className="contact__form">
                         <h3>Contact Form</h3>
-                        <form onSubmit={handleSubmit} id="contact-us" autoComplete='on'>
+                        <form onSubmit={handleSubmit} id="contact-us" autoComplete="on">
                             <input
                                 type="text"
                                 name="name"
@@ -96,6 +119,7 @@ const ContactUs = () => {
                                 onChange={handleInputChange}
                             />
                             {error && <p className="error">{error}</p>}
+                            {successMessage && <p className="success">{successMessage}</p>}
                             <button type="submit" className="btn-submit">Submit</button>
                         </form>
                     </div>
