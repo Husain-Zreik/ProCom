@@ -10,6 +10,7 @@
     left: 0;
     right: 0;
     width: 100%;
+    height: 70px;
     z-index: 1;
     padding: 0px 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -26,6 +27,10 @@
         rgba(83, 83, 83, 0.05) 66%,
         rgba(83, 83, 83, 0.05) 100%
     );
+
+    @media (max-width: calc(variables.$breakpoint-md - 1px)) {
+        z-index: 10;
+    }
 }
 
 // Navbar container
@@ -56,31 +61,25 @@
 // Logo container
 .navbar__logo {
     display: flex;
-    justify-content: center; // Center the logo horizontally
-    align-items: center; // Center the logo vertically
-    height: 65px; // Remove fixed height
-    width: 65px;
-}
-
-/* Company Logo */
-.company-logo {
-    display: flex;
-    justify-content: center;
     align-items: center;
-    width: 75px;
-    height: 75px;
-    // border: 1px solid #333; // Add border for visibility
+    gap: 3px;
+    padding: 5px;
 
-    /* Interactive States */
-    &:hover {
-        transform: scale(1.05);
-        opacity: 0.9;
+    svg {
+        width: 30px;
+        height: auto;
     }
 
-    /* Adjustments for Small Screens */
-    // @media (max-width: 768px) {
-    //     width: 100px;
-    // }
+    h1 {
+        display: inline-flex;
+        align-items: center;
+        font-size: 2rem;
+        color: #fff;
+    }
+
+    @media (min-width: calc(variables.$breakpoint-md - 1px)) {
+        display: none;
+    }
 }
 
 // Navbar links container (visible only when menu is open on mobile)
@@ -93,7 +92,7 @@
         gap: 20px;
     }
 
-    @media (max-width: variables.$breakpoint-md) {
+    @media (max-width: calc(variables.$breakpoint-md - 1px)) {
         display: none;
     }
 }
@@ -111,15 +110,15 @@
         color: variables.$color-text-dark;
 
         &:hover {
-            color: variables.$color-text-light;
+            color: variables.$color-secondary-dark;
         }
     }
 
     body.light & {
-        color: variables.$color-text-dark;
+        color: variables.$color-text-light;
 
         &:hover {
-            color: variables.$color-text-light;
+            color: variables.$color-secondary-light;
         }
     }
 }
@@ -133,7 +132,7 @@
         transform 0.3s ease,
         color 0.3s ease;
 
-    @media (max-width: variables.$breakpoint-md) {
+    @media (max-width: calc(variables.$breakpoint-md - 1px)) {
         display: block;
         font-size: 24px;
 
@@ -176,6 +175,10 @@
     &:hover {
         transform: scale(1.1);
     }
+
+    @media (max-width: calc(variables.$breakpoint-md - 1px)) {
+        display: none;
+    }
 }
 
 // Overlay for the links (when burger menu is open)
@@ -191,7 +194,7 @@
     align-items: center;
     z-index: 999;
 
-    @media (max-width: variables.$breakpoint-md) {
+    @media (max-width: calc(variables.$breakpoint-md - 1px)) {
         display: flex;
     }
 }
@@ -223,7 +226,7 @@
     font-size: 0.9rem;
 
     body.light & {
-        background-image: white;
+        background-image: variables.$color-text-light;
         color: variables.$color-text-secondary-light;
     }
     body.dark & {
@@ -243,6 +246,7 @@
         @media (max-width: 768px) {
             flex-direction: column;
             align-items: center;
+            text-align: center;
         }
     }
 
@@ -377,7 +381,7 @@
         color: variables.$color-text-dark;
     }
 
-    @media (max-width: variables.$breakpoint-md) {
+    @media (max-width: calc(variables.$breakpoint-md - 1px)) {
         font-size: 30px;
     }
 
@@ -390,7 +394,7 @@
     font-size: 16px;
     color: variables.$color-secondary-light;
 
-    @media (max-width: variables.$breakpoint-md) {
+    @media (max-width: calc(variables.$breakpoint-md - 1px)) {
         display: none;
         font-size: 14px;
     }
