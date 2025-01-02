@@ -40,7 +40,7 @@ const NewArrivals = () => {
     };
 
     return (
-        <div className="arrivals">
+        <section className="arrivals" id="arrivals">
             <div className="arrivals__container">
                 <SectionHeader title="New Arrivals" isColored={true} />
                 <div className="arrivals__carousel">
@@ -60,7 +60,7 @@ const NewArrivals = () => {
                     </Slider>
                 </div>
             </div>
-        </div>
+        </section>
     );
 };
 
