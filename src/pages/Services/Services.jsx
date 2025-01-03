@@ -2,9 +2,8 @@ import { useState, useCallback } from "react";
 import SectionHeader from "../../components/SectionHeader/SectionHeader";
 
 const Services = () => {
-    // State to track hovered service index and category
     const [hoveredIndex, setHoveredIndex] = useState(null);
-    const [hoveredCategory, setHoveredCategory] = useState(null);  // Track category
+    const [hoveredCategory, setHoveredCategory] = useState(null);
 
     const services = [
         {
@@ -13,7 +12,7 @@ const Services = () => {
             icon: "fas fa-sim-card",
             link: "https://pcgesim.com/welcome/",
             category: "external",
-            animation: "flip",  // Specify animation
+            animation: "flip",
         },
         {
             title: "Bulk SMS Marketing",
@@ -21,21 +20,21 @@ const Services = () => {
             icon: "fas fa-envelope",
             link: "https://bulksms.pcglobalco.com",
             category: "external",
-            animation: "shake",  // Specify animation
+            animation: "shake",
         },
         {
             title: "Custom Software Development",
             description: "Scalable and reliable software solutions tailored to meet specific business requirements.",
             icon: "fas fa-laptop-code",
             category: "internal",
-            animation: "bounce",  // Specify animation
+            animation: "bounce",
         },
         {
             title: "Software as a Service (SaaS)",
             description: "Access on-demand tools and services without the need for extensive infrastructure investment.",
             icon: "fas fa-cloud",
             category: "internal",
-            animation: "beat-fade",  // No animation
+            animation: "beat-fade",
         },
         {
             title: "PCG MS Marketing Service",
@@ -43,29 +42,28 @@ const Services = () => {
             icon: "fas fa-comments",
             link: "https://ms.pcglobalco.com",
             category: "external",
-            animation: "bounce",  // Specify animation
+            animation: "bounce",
         },
         {
             title: "Technical Consultation",
             description: "Receive expert guidance and tailored strategies to optimize your system performance, and ensure scalability for future growth.",
             icon: "fas fa-tools",
             category: "internal",
-            animation: "shake",  // Specify animation
+            animation: "shake",
         },
     ];
 
     // Callback to handle hover state change
     const handleMouseEnter = useCallback((index, category) => {
         setHoveredIndex(index);
-        setHoveredCategory(category);  // Set the hovered category
+        setHoveredCategory(category);
     }, []);
 
     const handleMouseLeave = useCallback(() => {
         setHoveredIndex(null);
-        setHoveredCategory(null);  // Reset on hover leave
+        setHoveredCategory(null);
     }, []);
 
-    // Utility function to decide the animation class
     const getIconClass = (index, category, animation) => {
         if (hoveredIndex === index && hoveredCategory === category && animation !== "none") {
             return `fa-${animation}`;
@@ -77,39 +75,6 @@ const Services = () => {
         <section className="services" id="services">
             <div className="services__container">
                 <SectionHeader title="Our Services" />
-
-                {/* Internal Services Section */}
-                <div className="services__category">
-                    <div className="services__category-header">
-                        <div className="services__category-icon">
-                            <i className="fa-brands fa-connectdevelop fa-spin-pulse"></i>
-                        </div>
-                        <div className="services__category-content">
-                            <h3 className="services__category-title">Customized Business Solutions</h3>
-                            <p className="services__category-description">
-                                Tailored internal services designed to meet unique business needs and drive growth.
-                            </p>
-                        </div>
-                    </div>
-                    <div className="services__category-grid">
-                        {services
-                            .filter(service => service.category === "internal")
-                            .map((service, index) => (
-                                <div
-                                    className="service__item"
-                                    key={index}
-                                    onMouseEnter={() => handleMouseEnter(index, 'internal')}  // Hover enter
-                                    onMouseLeave={handleMouseLeave}
-                                >
-                                    <div className="service__icon">
-                                        <i className={`${service.icon} ${getIconClass(index, 'internal', service.animation)}`}></i>
-                                    </div>
-                                    <h3 className="service__title">{service.title}</h3>
-                                    <p className="service__description">{service.description}</p>
-                                </div>
-                            ))}
-                    </div>
-                </div>
 
                 {/* External Services Section */}
                 <div className="services__category">
@@ -144,6 +109,39 @@ const Services = () => {
                                             <button className="link-button">Visit Website</button>
                                         </a>
                                     )}
+                                </div>
+                            ))}
+                    </div>
+                </div>
+
+                {/* Internal Services Section */}
+                <div className="services__category">
+                    <div className="services__category-header">
+                        <div className="services__category-icon">
+                            <i className="fa-brands fa-connectdevelop fa-spin-pulse"></i>
+                        </div>
+                        <div className="services__category-content">
+                            <h3 className="services__category-title">Customized Business Solutions</h3>
+                            <p className="services__category-description">
+                                Tailored internal services designed to meet unique business needs and drive growth.
+                            </p>
+                        </div>
+                    </div>
+                    <div className="services__category-grid">
+                        {services
+                            .filter(service => service.category === "internal")
+                            .map((service, index) => (
+                                <div
+                                    className="service__item"
+                                    key={index}
+                                    onMouseEnter={() => handleMouseEnter(index, 'internal')}  // Hover enter
+                                    onMouseLeave={handleMouseLeave}
+                                >
+                                    <div className="service__icon">
+                                        <i className={`${service.icon} ${getIconClass(index, 'internal', service.animation)}`}></i>
+                                    </div>
+                                    <h3 className="service__title">{service.title}</h3>
+                                    <p className="service__description">{service.description}</p>
                                 </div>
                             ))}
                     </div>

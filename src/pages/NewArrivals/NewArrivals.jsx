@@ -6,25 +6,25 @@ import SectionHeader from "../../components/SectionHeader/SectionHeader";
 const NewArrivals = () => {
     const arrivals = [
         {
-            title: "AI Integration: Revolutionize Your Workflow",
+            title: "eSIM Activation: Seamless Carrier Switching",
             description:
-                "Our cutting-edge AI integration service empowers your business to automate mundane tasks, analyze data in real-time, and deliver smarter insights. Stay ahead in your industry with seamless technology designed for you.",
+                "Our new eSIM Activation service offers instant activation and smooth switching between mobile carriers, without the need for physical SIM cards. Reach more customers with this cutting-edge mobile technology and promote the ease of use in your marketing.",
             image: "https://i.pinimg.com/736x/5a/6d/ec/5a6decdffbab6f9aad17ba5c02debc62.jpg",
-            link: "/services/ai-integration",
+            link: "https://pcgesim.com/welcome/",
         },
         {
-            title: "Smart Dashboard: Real-Time Insights",
+            title: "Bulk SMS Marketing: Instant Customer Engagement",
             description:
-                "Introducing our new Smart Dashboard that brings real-time analytics and user-friendly insights directly to your fingertips. Make data-driven decisions effortlessly.",
+                "Leverage our Bulk SMS Marketing service to engage thousands of customers instantly. This service is perfect for businesses looking to amplify their reach and boost conversions. New and efficient, it's time to spread the word and market your services effectively.",
             image: "https://i.pinimg.com/736x/87/17/da/8717daaeb5837fcd9fd15e9d8cecd8b0.jpg",
-            link: "/products/smart-dashboard",
+            link: "https://bulksms.pcglobalco.com",
         },
         {
-            title: "Version 2.0: Enhanced Performance",
+            title: "PCG MS Marketing Service: Boost Your WhatsApp Engagement",
             description:
-                "Our latest update, Version 2.0, delivers improved performance, new features, and an enhanced user experience across all platforms.",
+                "Our PCG MS Marketing Service uses WhatsApp Business API to help you connect with customers directly. It's a powerful marketing tool, ideal for businesses needing to enhance engagement. Discover how it can elevate your customer support and marketing efforts.",
             image: "https://i.pinimg.com/736x/1a/b6/ba/1ab6bae07f2b6cefab8c61e9f3b72004.jpg",
-            link: "/updates/version-2.0",
+            link: "https://ms.pcglobalco.com",
         },
     ];
 

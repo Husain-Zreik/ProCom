@@ -13,7 +13,7 @@ const Home = () => {
                         <h1 className="home__title">OCOM</h1>
                     </div>
                     <p className="home__subtitle">
-                        &quot;<b> PROCOM :</b> Innovating solutions, empowering connections. Your partner in building the digital future.&quot;
+                        <b>PROCOM :</b> Innovating solutions, empowering connections. Your partner in building the digital future.
                     </p>
                     <div className="home__buttons">
                         <button className="home__button">

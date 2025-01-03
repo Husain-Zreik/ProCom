@@ -94,7 +94,7 @@
                 rgba(220, 220, 220, 0.04) 40%,
                 rgba(220, 220, 220, 0.04) 100%
             ),
-            linear-gradient(90deg, rgb(255, 255, 255), rgb(255, 255, 255));
+            linear-gradient(90deg, rgb(242, 242, 242), rgb(255, 255, 255));
     }
 }
 
@@ -148,9 +148,11 @@
 .services__category-title {
     font-size: 24px;
     font-weight: bold;
-    color: variables.$color-primary-dark;
+    color: variables.$color-text-light;
+    // color: variables.$color-primary-dark;
     body.dark & {
-        color: variables.$color-secondary-dark;
+        // color: variables.$color-secondary-dark;
+        color: variables.$color-text-dark;
     }
 
     @media (max-width: variables.$breakpoint-md) {
