@@ -1,6 +1,35 @@
-import { Link } from "react-scroll";
+import { Link as RouterLink, useNavigate, useLocation } from "react-router-dom";
+import { Link, scroller } from "react-scroll";
+import { useEffect } from "react";
 
 function Footer() {
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (location.state?.scrollTo) {
+            scroller.scrollTo(location.state.scrollTo, {
+                duration: 1500,
+                delay: 0,
+                smooth: "easeInOutQuart",
+            });
+
+            window.history.replaceState({}, document.title, location.pathname);
+        }
+    }, [location]);
+
+    const handleNavigation = (section) => {
+        if (location.pathname === "/") {
+            scroller.scrollTo(section, {
+                duration: 1500,
+                delay: 0,
+                smooth: "easeInOutQuart",
+            });
+        } else {
+            navigate("/", { state: { scrollTo: section } });
+        }
+    };
+
     return (
         <footer className="footer">
             <div className="footer__content">
@@ -9,12 +38,21 @@ function Footer() {
                     <p>Empowering innovation and excellence.</p>
                 </div>
                 <div className="footer__links">
-                    <Link to="about" spy={true} smooth={true} duration={2500} aria-label="About Us">About Us</Link>
-                    <Link to="services" spy={true} smooth={true} duration={1500} aria-label="Our Services">Services</Link>
-                    <Link to="faqs" spy={true} smooth={true} duration={1000} aria-label="FAQs">FAQs</Link>
-                    <Link to="contact" spy={true} smooth={true} duration={500} aria-label="Contact Us">Contact</Link>
-                    <a href="#privacy-policy" aria-label="Privacy Policy" rel="noopener noreferrer">Privacy Policy</a>
-                    <a href="#terms-of-service" aria-label="Terms of Service" rel="noopener noreferrer">Terms of Service</a>
+                    <Link onClick={() => handleNavigation("about")} spy={true} smooth={true} duration={500} className="navbar__link">
+                        About
+                    </Link>
+                    <Link onClick={() => handleNavigation("services")} spy={true} smooth={true} duration={1500} className="navbar__link">
+                        Services
+                    </Link>
+                    <Link onClick={() => handleNavigation("faqs")} spy={true} smooth={true} duration={2000} className="navbar__link">
+                        FAQs
+                    </Link>
+                    <Link onClick={() => handleNavigation("contact")} spy={true} smooth={true} duration={2500} className="navbar__link">
+                        Contact
+                    </Link>
+                    <RouterLink to="/privacy-policy" aria-label="Privacy Policy">
+                        Privacy Policy
+                    </RouterLink>
                 </div>
                 <div className="footer__social">
                     <a href="https://twitter.com" aria-label="Twitter" target="_blank" rel="noopener noreferrer">

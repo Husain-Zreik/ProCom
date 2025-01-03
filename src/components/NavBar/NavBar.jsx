@@ -1,13 +1,17 @@
 import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-scroll";
+import { Link, scroller } from "react-scroll";
 import { ReactSVG } from "react-svg";
 import Switch from "../Switch/Switch";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const NavBar = () => {
     const [theme, setTheme] = useState("dark");
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+    const location = useLocation();
+    const navigate = useNavigate();
 
     // Sync the theme with the body class
     useEffect(() => {
@@ -30,6 +34,20 @@ const NavBar = () => {
         setIsMenuOpen(false);
     };
 
+    const handleNavigation = (section) => {
+        if (location.pathname === "/") {
+            scroller.scrollTo(section, {
+                duration: 1500,
+                delay: 0,
+                smooth: "easeInOutQuart",
+            });
+        } else {
+            navigate("/", { state: { scrollTo: section } });
+        }
+
+        isMenuOpen ? closeMenu() : null;
+    };
+
     return (
         <div className="navbar__container">
             <div className="navbar">
@@ -43,27 +61,27 @@ const NavBar = () => {
                     {/* Navbar links */}
                     <ul className={`navbar__links ${isMenuOpen ? "show" : ""}`}>
                         <li>
-                            <Link to="about" spy={true} smooth={true} duration={500} className="navbar__link">
+                            <Link onClick={() => handleNavigation("about")} spy={true} smooth={true} duration={500} className="navbar__link">
                                 About
                             </Link>
                         </li>
                         <li>
-                            <Link to="arrivals" spy={true} smooth={true} duration={1000} className="navbar__link">
+                            <Link onClick={() => handleNavigation("arrivals")} spy={true} smooth={true} duration={1000} className="navbar__link">
                                 Arrivals
                             </Link>
                         </li>
                         <li>
-                            <Link to="services" spy={true} smooth={true} duration={1500} className="navbar__link">
+                            <Link onClick={() => handleNavigation("services")} spy={true} smooth={true} duration={1500} className="navbar__link">
                                 Services
                             </Link>
                         </li>
                         <li>
-                            <Link to="faqs" spy={true} smooth={true} duration={2000} className="navbar__link" onClick={closeMenu}>
+                            <Link onClick={() => handleNavigation("faqs")} spy={true} smooth={true} duration={2000} className="navbar__link">
                                 FAQs
                             </Link>
                         </li>
                         <li>
-                            <Link to="contact" spy={true} smooth={true} duration={2500} className="navbar__link">
+                            <Link onClick={() => handleNavigation("contact")} spy={true} smooth={true} duration={2500} className="navbar__link">
                                 Contact
                             </Link>
                         </li>
@@ -87,30 +105,31 @@ const NavBar = () => {
                         </div>
                         <ul className="navbar__links">
                             <li>
-                                <Link to="about" spy={true} smooth={true} duration={500} className="navbar__link" onClick={closeMenu}>
+                                <Link onClick={() => handleNavigation("about")} spy={true} smooth={true} duration={500} className="navbar__link" >
                                     About
                                 </Link>
                             </li>
                             <li>
-                                <Link to="arrivals" spy={true} smooth={true} duration={1000} className="navbar__link" onClick={closeMenu}>
+                                <Link onClick={() => handleNavigation("arrivals")} spy={true} smooth={true} duration={1000} className="navbar__link" >
                                     Arrivals
                                 </Link>
                             </li>
                             <li>
-                                <Link to="services" spy={true} smooth={true} duration={1500} className="navbar__link" onClick={closeMenu}>
+                                <Link onClick={() => handleNavigation("services")} spy={true} smooth={true} duration={1500} className="navbar__link" >
                                     Services
                                 </Link>
                             </li>
                             <li>
-                                <Link to="faqs" spy={true} smooth={true} duration={2000} className="navbar__link" onClick={closeMenu}>
+                                <Link onClick={() => handleNavigation("faqs")} spy={true} smooth={true} duration={2000} className="navbar__link" >
                                     FAQs
                                 </Link>
                             </li>
                             <li>
-                                <Link to="contact" spy={true} smooth={true} duration={2500} className="navbar__link" onClick={closeMenu}>
+                                <Link onClick={() => handleNavigation("contact")} spy={true} smooth={true} duration={2500} className="navbar__link" >
                                     Contact
                                 </Link>
                             </li>
+
                             <li>
                                 <Switch onClick={toggleTheme} />
                             </li>
