@@ -115,7 +115,7 @@
     }
 
     body.light & {
-        color: variables.$color-text-light;
+        color: variables.$color-text-dark;
 
         &:hover {
             color: variables.$color-secondary-light;

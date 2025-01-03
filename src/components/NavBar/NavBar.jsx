@@ -6,7 +6,7 @@ import { ReactSVG } from "react-svg";
 import Switch from "../Switch/Switch";
 
 const NavBar = () => {
-    const [theme, setTheme] = useState("light");
+    const [theme, setTheme] = useState("dark");
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     // Sync the theme with the body class
@@ -69,9 +69,6 @@ const NavBar = () => {
                 <div className="navbar__right">
                     <div className="navbar__theme-toggle" onClick={toggleTheme}>
                         <Switch onClick={toggleTheme} />
-                        {/* <span className={`theme-toggle-icon ${theme === "light" ? "sun" : "moon"}`}> */}
-                        {/* <i className={`fas fa-${theme === "light" ? "sun" : "moon"}`}></i> */}
-                        {/* </span> */}
                     </div>
 
                     <FontAwesomeIcon className="navbar__hamburger" icon={faBars} size="lg" onClick={toggleMenu} />

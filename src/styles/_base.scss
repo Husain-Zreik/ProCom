@@ -8,7 +8,7 @@
     padding: 0;
     box-sizing: border-box;
     transition:
-        background-color 0.4s ease,
+        background-color 1.4s ease,
         color 0.4s ease;
 }
 
@@ -25,9 +25,6 @@ html {
 
     // Set the base font size for rem calculations
     font-size: variables.$font-size-base;
-
-    // Optionally, set a default background color or any global properties
-    background-color: variables.$color-background-light; // Default background for light mode
 
     // Media queries for responsive font size adjustments
     @media (max-width: variables.$breakpoint-md) {
@@ -78,7 +75,6 @@ button {
     padding: variables.$spacing-small variables.$spacing-medium;
     font-size: 1.1em;
     font-weight: variables.$font-weight-medium;
-    color: variables.$color-text-dark;
     cursor: pointer;
     transition: all 0.4s;
 }

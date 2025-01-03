@@ -5,7 +5,7 @@ const Switch = ({ onClick }) => {
   return (
     <StyledWrapper >
       <label className="switch">
-        <input id="input" type="checkbox" defaultChecked={false} onChange={onClick} />
+        <input id="input" type="checkbox" defaultChecked={true} onChange={onClick} />
         <div className="slider round">
           <div className="sun-moon">
             <svg id="moon-dot-1" className="moon-dot" viewBox="0 0 100 100">
