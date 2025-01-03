@@ -1,0 +1,176 @@
+@use "../variables";
+
+.faqs {
+    padding: 10px 0px;
+    background-image: linear-gradient(
+            248deg,
+            rgba(104, 104, 104, 0.05) 0%,
+            rgba(104, 104, 104, 0.05) 33.333%,
+            rgba(12, 12, 12, 0.05) 33.333%,
+            rgba(12, 12, 12, 0.05) 66.666%,
+            rgba(12, 12, 12, 0.05) 66.666%,
+            rgba(12, 12, 12, 0.05) 99.999%
+        ),
+        linear-gradient(
+            48deg,
+            rgba(104, 104, 104, 0.05) 0%,
+            rgba(104, 104, 104, 0.05) 33.333%,
+            rgba(12, 12, 12, 0.05) 33.333%,
+            rgba(12, 12, 12, 0.05) 66.666%,
+            rgba(12, 12, 12, 0.05) 66.666%,
+            rgba(12, 12, 12, 0.05) 99.999%
+        ),
+        linear-gradient(
+            158deg,
+            rgba(104, 104, 104, 0.05) 0%,
+            rgba(104, 104, 104, 0.05) 33.333%,
+            rgba(12, 12, 12, 0.05) 33.333%,
+            rgba(12, 12, 12, 0.05) 66.666%,
+            rgba(12, 12, 12, 0.05) 66.666%,
+            rgba(12, 12, 12, 0.05) 99.999%
+        ),
+        linear-gradient(90deg, rgba(255, 27, 99, 0.597), rgba(252, 23, 103, 0.819));
+
+    &__container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        padding: 20px;
+    }
+
+    &-animation {
+        flex: 1;
+        max-width: 30%;
+        text-align: center;
+        width: 100%;
+        @media (max-width: variables.$breakpoint-md) {
+            display: none;
+        }
+    }
+
+    &__content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 2rem;
+        gap: 20px;
+
+        .faqs-list {
+            width: 60%;
+            @media (max-width: variables.$breakpoint-md) {
+                width: 100%;
+            }
+
+            .faq-item {
+                border-top: none;
+                overflow: hidden;
+                border: 1px solid rgba(200, 200, 200, 0.3);
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                transition:
+                    transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                    box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+                &:first-child {
+                    border-top: 1px solid rgba(200, 200, 200, 0.3);
+                    border-radius: 8px 8px 0 0;
+                }
+
+                &:last-child {
+                    border-radius: 0 0 8px 8px;
+                }
+
+                &:hover {
+                    transform: translateY(-2px);
+                    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+                }
+
+                body.light & {
+                    background-color: variables.$color-background-light;
+                }
+                body.dark & {
+                    background-color: variables.$color-background-dark;
+                }
+
+                .faq-question {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    gap: 20px;
+                    width: 100%;
+                    padding: 20px;
+                    font-size: 1.2rem;
+                    text-align: left;
+                    background-color: transparent;
+                    border: none;
+                    cursor: pointer;
+                    transition:
+                        background-color 0.3s ease,
+                        color 0.3s ease;
+
+                    body.light & {
+                        color: variables.$color-text-light;
+                    }
+                    body.dark & {
+                        color: variables.$color-text-dark;
+                    }
+
+                    .faq-icon-container {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        min-width: 24px;
+                        height: 24px;
+                        border-radius: 50%;
+                        font-size: 1rem;
+                        color: white;
+                        transition:
+                            background-color 0.3s ease,
+                            transform 0.3s ease;
+
+                        body.light & {
+                            background-color: variables.$color-primary-light;
+                        }
+                        body.dark & {
+                            background-color: variables.$color-secondary-dark;
+                        }
+
+                        &:hover {
+                            transform: scale(1.1); /* Only scales the icon, not the container */
+                        }
+
+                        .faq-icon {
+                            transition: transform 0.3s ease;
+
+                            &.open {
+                                transform: rotate(180deg);
+                            }
+                        }
+                    }
+                }
+
+                .faq-answer {
+                    padding: 20px;
+                    font-size: 1rem;
+                    line-height: 1.8;
+                    text-align: left;
+                    border-top: 1px solid rgba(200, 200, 200, 0.3);
+                    transition:
+                        padding 0.3s ease,
+                        background-color 0.3s ease,
+                        color 0.3s ease;
+
+                    body.light & {
+                        color: variables.$color-text-secondary-light;
+                        background-color: #f2f2f2;
+                    }
+                    body.dark & {
+                        color: variables.$color-text-secondary-dark;
+                        background-color: variables.$color-background-secondary-dark;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -6,6 +6,7 @@ import NewArrivals from './pages/NewArrivals/NewArrivals';
 import AboutUs from './pages/AboutUs/AboutUs';
 import ContactUs from './pages/ContactUs/ContactUs';
 import Footer from './components/Footer/Footer';
+import FAQs from './pages/FAQs/FAQs';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <AboutUs />
           <NewArrivals />
           <Services />
+          <FAQs />
           <ContactUs />
           <Footer />
         </BrowserRouter>
