@@ -63,28 +63,29 @@ $moz-osx-font-smoothing: grayscale;
 // ============================
 // GLOBAL VARIABLES (Default to Light Mode)
 // ============================
-$color-background: $color-background-light;
-$color-text: $color-text-light;
-$color-primary: $color-primary-light;
-$color-secondary: $color-secondary-light;
-$color-link-hover: $color-link-hover-light;
-$color-button-background: $color-button-background-light;
-$color-button-background-hover: $color-button-background-hover-light;
+
+$color-background: $color-background-dark;
+$color-text: $color-text-dark;
+$color-primary: $color-primary-dark;
+$color-secondary: $color-secondary-dark;
+
+$color-link-hover: $color-link-hover-dark;
+$color-button-background: $color-button-background-dark;
+$color-button-background-hover: $color-button-background-hover-dark;
 
 // ============================
 // MEDIA QUERIES TO HANDLE DARK MODE
 // ============================
 
 // Dark Mode Overrides
-@media (prefers-color-scheme: dark) {
-    $color-background: $color-background-dark;
-    $color-text: $color-text-dark;
-    $color-primary: $color-primary-dark;
-    $color-secondary: $color-secondary-dark;
-
-    $color-link-hover: $color-link-hover-dark;
-    $color-button-background: $color-button-background-dark;
-    $color-button-background-hover: $color-button-background-hover-dark;
+@media (prefers-color-scheme: light) {
+    $color-background: $color-background-light;
+    $color-text: $color-text-light;
+    $color-primary: $color-primary-light;
+    $color-secondary: $color-secondary-light;
+    $color-link-hover: $color-link-hover-light;
+    $color-button-background: $color-button-background-light;
+    $color-button-background-hover: $color-button-background-hover-light;
 }
 
 // ============================

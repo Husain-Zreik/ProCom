@@ -1,13 +1,68 @@
+@use "../variables";
+
 .privacy-policy {
-    padding: 2rem 1rem;
+    padding: 10rem 1rem;
+    background-image: linear-gradient(
+            248deg,
+            rgba(104, 104, 104, 0.05) 0%,
+            rgba(104, 104, 104, 0.05) 33.333%,
+            rgba(12, 12, 12, 0.05) 33.333%,
+            rgba(12, 12, 12, 0.05) 66.666%,
+            rgba(12, 12, 12, 0.05) 66.666%,
+            rgba(12, 12, 12, 0.05) 99.999%
+        ),
+        linear-gradient(
+            78deg,
+            rgba(104, 104, 104, 0.05) 0%,
+            rgba(104, 104, 104, 0.05) 33.333%,
+            rgba(12, 12, 12, 0.05) 33.333%,
+            rgba(12, 12, 12, 0.05) 66.666%,
+            rgba(12, 12, 12, 0.05) 66.666%,
+            rgba(12, 12, 12, 0.05) 99.999%
+        ),
+        linear-gradient(
+            138deg,
+            rgba(104, 104, 104, 0.05) 0%,
+            rgba(104, 104, 104, 0.05) 33.333%,
+            rgba(12, 12, 12, 0.05) 33.333%,
+            rgba(12, 12, 12, 0.05) 66.666%,
+            rgba(12, 12, 12, 0.05) 66.666%,
+            rgba(12, 12, 12, 0.05) 99.999%
+        ),
+        linear-gradient(
+            48deg,
+            rgba(104, 104, 104, 0.05) 0%,
+            rgba(104, 104, 104, 0.05) 33.333%,
+            rgba(12, 12, 12, 0.05) 33.333%,
+            rgba(12, 12, 12, 0.05) 66.666%,
+            rgba(12, 12, 12, 0.05) 66.666%,
+            rgba(12, 12, 12, 0.05) 99.999%
+        ),
+        linear-gradient(
+            158deg,
+            rgba(104, 104, 104, 0.05) 0%,
+            rgba(104, 104, 104, 0.05) 33.333%,
+            rgba(12, 12, 12, 0.05) 33.333%,
+            rgba(12, 12, 12, 0.05) 66.666%,
+            rgba(12, 12, 12, 0.05) 66.666%,
+            rgba(12, 12, 12, 0.05) 99.999%
+        ),
+        linear-gradient(90deg, rgba(255, 27, 99, 0.597), rgba(252, 23, 103, 0.819));
 
     .container {
         max-width: 1200px;
         margin: 0 auto;
-        background: #fff;
         padding: 2rem;
         border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+        body.dark & {
+            background: variables.$color-background-secondary-dark;
+        }
+
+        body.light & {
+            background: variables.$color-background-secondary-light;
+        }
 
         h1 {
             font-size: 2.5rem;
@@ -25,11 +80,25 @@
             font-size: 1rem;
             line-height: 1.6;
             margin-bottom: 1rem;
+            body.dark & {
+                color: variables.$color-text-secondary-dark;
+            }
+
+            body.light & {
+                color: variables.$color-text-secondary-light;
+            }
         }
 
         ul {
             margin-left: 1.5rem;
             list-style: disc;
+            body.dark & {
+                color: variables.$color-text-secondary-dark;
+            }
+
+            body.light & {
+                color: variables.$color-text-secondary-light;
+            }
 
             li {
                 margin-bottom: 0.5rem;
