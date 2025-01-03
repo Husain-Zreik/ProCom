@@ -9,8 +9,9 @@ function Footer() {
                     <p>Empowering innovation and excellence.</p>
                 </div>
                 <div className="footer__links">
-                    <Link to="about" spy={true} smooth={true} duration={500} aria-label="About Us">About Us</Link>
-                    <Link to="services" spy={true} smooth={true} duration={500} aria-label="Our Services">Services</Link>
+                    <Link to="about" spy={true} smooth={true} duration={2500} aria-label="About Us">About Us</Link>
+                    <Link to="services" spy={true} smooth={true} duration={1500} aria-label="Our Services">Services</Link>
+                    <Link to="faqs" spy={true} smooth={true} duration={1000} aria-label="FAQs">FAQs</Link>
                     <Link to="contact" spy={true} smooth={true} duration={500} aria-label="Contact Us">Contact</Link>
                     <a href="#privacy-policy" aria-label="Privacy Policy" rel="noopener noreferrer">Privacy Policy</a>
                     <a href="#terms-of-service" aria-label="Terms of Service" rel="noopener noreferrer">Terms of Service</a>

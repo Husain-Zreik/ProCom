@@ -42,11 +42,32 @@
 
     &-animation {
         flex: 1;
-        max-width: 30%;
+        max-width: 35%;
         text-align: center;
         width: 100%;
         @media (max-width: variables.$breakpoint-md) {
             display: none;
+        }
+    }
+
+    &-image {
+        width: 100%;
+        max-width: 450px;
+        border-radius: 8px;
+        height: 500px;
+        object-fit: cover;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+
+        @media (max-width: variables.$breakpoint-md2) {
+            height: 350px;
+        }
+
+        @media (max-width: variables.$breakpoint-md) {
+            height: 300px;
+        }
+
+        @media (max-width: variables.$breakpoint-xs) {
+            height: 250px;
         }
     }
 
@@ -87,10 +108,10 @@
                 }
 
                 body.light & {
-                    background-color: variables.$color-background-light;
+                    background-color: rgba(variables.$color-background-light, 0.9);
                 }
                 body.dark & {
-                    background-color: variables.$color-background-dark;
+                    background-color: rgba(variables.$color-background-dark, 0.9);
                 }
 
                 .faq-question {
@@ -101,6 +122,7 @@
                     width: 100%;
                     padding: 20px;
                     font-size: 1.2rem;
+                    font-weight: 600;
                     text-align: left;
                     background-color: transparent;
                     border: none;
@@ -120,10 +142,10 @@
                         display: flex;
                         justify-content: center;
                         align-items: center;
-                        min-width: 24px;
-                        height: 24px;
+                        min-width: 28px;
+                        height: 28px;
                         border-radius: 50%;
-                        font-size: 1rem;
+                        font-size: 0.9rem;
                         color: white;
                         transition:
                             background-color 0.3s ease,
@@ -134,18 +156,6 @@
                         }
                         body.dark & {
                             background-color: variables.$color-secondary-dark;
-                        }
-
-                        &:hover {
-                            transform: scale(1.1); /* Only scales the icon, not the container */
-                        }
-
-                        .faq-icon {
-                            transition: transform 0.3s ease;
-
-                            &.open {
-                                transform: rotate(180deg);
-                            }
                         }
                     }
                 }

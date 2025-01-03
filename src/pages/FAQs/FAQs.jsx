@@ -7,7 +7,7 @@ const FAQItem = ({ question, answer, isOpen, onClick }) => (
         <button className="faq-question" onClick={onClick}>
             {question}
             <span className="faq-icon-container">
-                <span className={`faq-icon ${isOpen ? 'open' : ''}`}>↓</span>
+                <i className={`fa-solid fa-up-long  ${isOpen ? 'fa-spin-pulse' : 'fa-beat'}`}></i>
             </span>
         </button>
         {isOpen && <div className="faq-answer">{answer}</div>}
@@ -61,7 +61,7 @@ const FAQs = () => {
                         ))}
                     </div>
                     <div className="faqs-animation">
-                        <img src="https://i.pinimg.com/736x/25/97/91/259791bed227fa612f46a9c46530766d.jpg" alt="faq animation" className="about__image" />
+                        <img src="https://img.freepik.com/foto-gratis/gafas-escritorio-oficina-repleto-papeles-blanco-negro_1098-50.jpg?t=st=1735907797~exp=1735911397~hmac=e863c53c466818444f607cee1365e8d81027f241cf15d3400006b98b00ca9ae9&w=996" alt="faq animation" className="faqs-image" />
                     </div>
                 </div>
             </div>

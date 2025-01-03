@@ -58,7 +58,12 @@ const NavBar = () => {
                             </Link>
                         </li>
                         <li>
-                            <Link to="contact" spy={true} smooth={true} duration={2000} className="navbar__link">
+                            <Link to="faqs" spy={true} smooth={true} duration={2000} className="navbar__link" onClick={closeMenu}>
+                                FAQs
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="contact" spy={true} smooth={true} duration={2500} className="navbar__link">
                                 Contact
                             </Link>
                         </li>
@@ -97,7 +102,12 @@ const NavBar = () => {
                                 </Link>
                             </li>
                             <li>
-                                <Link to="contact" spy={true} smooth={true} duration={2000} className="navbar__link" onClick={closeMenu}>
+                                <Link to="faqs" spy={true} smooth={true} duration={2000} className="navbar__link" onClick={closeMenu}>
+                                    FAQs
+                                </Link>
+                            </li>
+                            <li>
+                                <Link to="contact" spy={true} smooth={true} duration={2500} className="navbar__link" onClick={closeMenu}>
                                     Contact
                                 </Link>
                             </li>
