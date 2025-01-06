@@ -15,17 +15,13 @@ function Footer() {
             });
 
             window.history.replaceState({}, document.title, location.pathname);
+        } else {
+            window.scrollTo({ top: 0, behavior: "smooth" });
         }
     }, [location]);
 
     const handleNavigation = (section) => {
-        if (location.pathname === "/") {
-            scroller.scrollTo(section, {
-                duration: 1500,
-                delay: 0,
-                smooth: "easeInOutQuart",
-            });
-        } else {
+        if (location.pathname !== "/") {
             navigate("/", { state: { scrollTo: section } });
         }
     };
@@ -38,19 +34,19 @@ function Footer() {
                     <p>Empowering innovation and excellence.</p>
                 </div>
                 <div className="footer__links">
-                    <Link onClick={() => handleNavigation("about")} spy={true} smooth={true} duration={500} className="navbar__link">
+                    <Link to="about" onClick={() => handleNavigation("about")} spy={true} smooth={true} duration={500} className="navbar__link">
                         About
                     </Link>
-                    <Link onClick={() => handleNavigation("services")} spy={true} smooth={true} duration={1500} className="navbar__link">
+                    <Link to="services" onClick={() => handleNavigation("services")} spy={true} smooth={true} duration={1500} className="navbar__link">
                         Services
                     </Link>
-                    <Link onClick={() => handleNavigation("faqs")} spy={true} smooth={true} duration={2000} className="navbar__link">
+                    <Link to="faqs" onClick={() => handleNavigation("faqs")} spy={true} smooth={true} duration={2000} className="navbar__link">
                         FAQs
                     </Link>
-                    <Link onClick={() => handleNavigation("contact")} spy={true} smooth={true} duration={2500} className="navbar__link">
+                    <Link to="contact" onClick={() => handleNavigation("contact")} spy={true} smooth={true} duration={2500} className="navbar__link">
                         Contact
                     </Link>
-                    <RouterLink to="/privacy-policy" aria-label="Privacy Policy">
+                    <RouterLink to="/privacy-policy" aria-label="Privacy Policy" className="navbar__link">
                         Privacy Policy
                     </RouterLink>
                 </div>
