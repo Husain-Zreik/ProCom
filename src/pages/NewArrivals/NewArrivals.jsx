@@ -1,9 +1,53 @@
+import { useEffect, useRef } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import SectionHeader from "../../components/SectionHeader/SectionHeader";
 
 const NewArrivals = () => {
+    const sliderRef = useRef(null);
+
+    // Handle accessibility fixes and ARIA-related adjustments
+    useEffect(() => {
+        // Ensure that the ref is set before attempting to interact with it
+        if (sliderRef.current) {
+            // Add focus management and accessibility adjustments after the slider is initialized
+            const handleAfterChange = (currentSlide) => {
+                const allSlides = document.querySelectorAll('.slick-slide');
+
+                // Remove focusable behavior from non-active slides
+                allSlides.forEach((slide) => {
+                    const slideAnchor = slide.querySelector("a.arrivals__button");
+                    if (slideAnchor) {
+                        slideAnchor.setAttribute('tabindex', '-1');
+                    }
+                    slide.setAttribute('aria-hidden', 'true');
+                });
+
+                // Make the current (active) slide focusable
+                const activeSlide = document.querySelector(`.slick-slide[data-index="${currentSlide}"]`);
+                if (activeSlide) {
+                    const focusable = activeSlide.querySelector("a.arrivals__button");
+                    if (focusable) {
+                        focusable.setAttribute('tabindex', '0');
+                    }
+                    activeSlide.setAttribute('aria-hidden', 'false');
+                }
+            };
+
+            // Ensure the slider is fully initialized before calling setProps
+            if (sliderRef.current && sliderRef.current.slick) {
+                sliderRef.current.slick.setProps({ afterChange: handleAfterChange });
+            }
+
+            // Handle cloned slides
+            const clonedSlides = document.querySelectorAll('.slick-slide.slick-cloned a.arrivals__button');
+            clonedSlides.forEach((slide) => {
+                slide.setAttribute('tabindex', '-1');
+            });
+        }
+    }, []);
+
     const arrivals = [
         {
             title: "eSIM Activation: Seamless Carrier Switching",
@@ -37,6 +81,7 @@ const NewArrivals = () => {
         autoplay: true,
         autoplaySpeed: 5000,
         arrows: false,
+        accessibility: true, // Enable accessibility
     };
 
     return (
@@ -44,9 +89,13 @@ const NewArrivals = () => {
             <div className="arrivals__container">
                 <SectionHeader title="New Arrivals" isColored={true} />
                 <div className="arrivals__carousel">
-                    <Slider {...settings}>
+                    <Slider {...settings} ref={sliderRef}>
                         {arrivals.map((arrival, index) => (
-                            <div key={index} className="arrivals__banner">
+                            <div
+                                key={index}
+                                className="arrivals__banner"
+                                aria-hidden={index !== 0} // Make non-active slides hidden from screen readers
+                            >
                                 <img src={arrival.image} alt={arrival.title} className="arrivals__image" />
                                 <div className="arrivals__content">
                                     <h1 className="arrivals__title">{arrival.title}</h1>

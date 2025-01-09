@@ -110,7 +110,7 @@
             color: variables.$color-primary-light;
         }
         body.dark & {
-            color: variables.$color-secondary-dark;
+            color: #ff0059eb;
         }
 
         @media (max-width: variables.$breakpoint-md2) {

@@ -83,7 +83,7 @@ const Services = () => {
                             <i className="fa-brands fa-connectdevelop fa-spin-pulse"></i>
                         </div>
                         <div className="services__category-content">
-                            <h3 className="services__category-title">User-Focused Digital Products</h3>
+                            <h2 className="services__category-title">User-Focused Digital Products</h2>
                             <p className="services__category-description">
                                 Specialized external services crafted to deliver solutions that empower and engage users.
                             </p>
@@ -102,7 +102,7 @@ const Services = () => {
                                     <div className="service__icon">
                                         <i className={`${service.icon} ${getIconClass(index, 'external', service.animation)}`}></i>
                                     </div>
-                                    <h3 className="service__title">{service.title}</h3>
+                                    <h2 className="service__title">{service.title}</h2>
                                     <p className="service__description">{service.description}</p>
                                     {service.link && (
                                         <a href={service.link} target="_blank" rel="noopener noreferrer" className="service__link">
@@ -121,7 +121,7 @@ const Services = () => {
                             <i className="fa-brands fa-connectdevelop fa-spin-pulse"></i>
                         </div>
                         <div className="services__category-content">
-                            <h3 className="services__category-title">Customized Business Solutions</h3>
+                            <h2 className="services__category-title">Customized Business Solutions</h2>
                             <p className="services__category-description">
                                 Tailored internal services designed to meet unique business needs and drive growth.
                             </p>
@@ -140,7 +140,7 @@ const Services = () => {
                                     <div className="service__icon">
                                         <i className={`${service.icon} ${getIconClass(index, 'internal', service.animation)}`}></i>
                                     </div>
-                                    <h3 className="service__title">{service.title}</h3>
+                                    <h2 className="service__title">{service.title}</h2>
                                     <p className="service__description">{service.description}</p>
                                 </div>
                             ))}

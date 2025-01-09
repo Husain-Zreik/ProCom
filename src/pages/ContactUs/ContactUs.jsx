@@ -68,7 +68,7 @@ const ContactUs = () => {
                     {/* Map and Contact Info Combined in a Card */}
                     <div className="contact__card">
                         <div className="contact__details">
-                            <h3>Contact Information</h3>
+                            <h2>Contact Information</h2>
                             <p><strong>Phone:</strong> +1 (123) 456-7890</p>
                             <p><strong>Email:</strong> support@procom.com</p>
                             <p><strong>Business Hours:</strong> Mon - Fri, 9 AM - 6 PM</p>
@@ -89,7 +89,7 @@ const ContactUs = () => {
 
                     {/* Contact Form */}
                     <div className="contact__form">
-                        <h3>Contact Form</h3>
+                        <h2>Contact Form</h2>
                         <form onSubmit={handleSubmit} id="contact-us" autoComplete="on">
                             <input
                                 type="text"

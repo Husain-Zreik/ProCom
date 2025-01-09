@@ -10,9 +10,9 @@ const Home = () => {
                 <div className="home__content">
                     <div className="home__header">
                         <ReactSVG src="/PRC-Logo/P-logo2.svg" className="home__logo" />
-                        <h1 className="home__title">OCOM</h1>
+                        <h1 name="title" className="home__title">OCOM</h1>
                     </div>
-                    <p className="home__subtitle">
+                    <p className="home__subtitle" name="description">
                         <b>PROCOM :</b> Innovating solutions, empowering connections. Your partner in building the digital future.
                     </p>
                     <div className="home__buttons">
